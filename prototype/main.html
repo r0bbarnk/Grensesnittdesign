@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Budsjett</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+    <script id="popup-outside-page-script">
+        // Instantiate the popup on DOMReady, and enhance its contents
+        $(function () {
+            $("#popup-outside-page").enhanceWithin().popup();
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id="popup-outside-page" data-theme="a">
+        <!-- This popup has its theme explicitly defined via data-theme="a"
+		     because it has no parent from which to automatically inherit
+		     its theme -->
+        <p>
+            Her kan man ha masse innhold
+        </p>
+        <ul data-role="listview">
+            <li>Global Menu</li>
+
+            <li>
+                <a href="#login">Login Page</a>
+            </li>
+            <li>
+                <a href="#summary">Oversikt</a>
+            </li>
+            <li>
+                <a href="#third-page">Third Page</a>
+            </li>
+        </ul>
+    </div>
+
+    <div data-role="page" id="login">
+        <div role="main" class="ui-content" id="loginContent">
+            <center><a id="createUser" href="#create"><span>Klikk her</span> for å opprette en konto</a></center>
+            <hr>
+            <input type="text" name="username" id="username" placeholder="Brukernavn" data-wrapper-class="ui-custom" />
+            <input type="password" name="password" id="password" value="" placeholder="Passord" data-wrapper-class="ui-custom" />
+            <a href="#forgot" id="forgotLink">Glemt passord?</a>
+            <br>
+            <a href="#home" data-role="button" onClick="login()" id="loginBtn" data-transition="flip">LOGG INN</a>
+            <hr>
+            <!--<a href="#"><img alt="facebookLogin" src="img/Facebook-kopi%202.png" id="facebookLogin"></a>-->
+        </div>
+        <!-- /content -->
+        <div role="img" id="loginBackground">
+        </div>
+    </div>
+    <!-- /page -->
+    
+    <!-- Glemt passord -->
+    <div data-role="page" id="forgot">
+            
+        <div data-role="header">
+            <h1>Glemt passord</h1>
+            <a data-rel="back"> < </a>
+        </div>
+        <!-- /header -->
+            
+        <div role="main" class="password" id="forgotContent">
+           <center><p id="createUser" href="#create">Fyll inn din epost og få tilsendt nytt passord</p></center>
+            <hr>
+            <input type="text" name="username" id="usernamePassword" placeholder="Epost" data-wrapper-class="ui-custom" />
+            <a href="#login" data-role="button" onClick="forgot()" id="loginBtn" data-transition="flip">Send passord</a>
+            <hr>
+        </div>
+        <!-- /content -->
+
+        <!-- /content -->
+    </div>
+    <!-- / end glemt passord -->
+
+    <div data-role="page" id="home" data-add-back-btn="true">
+
+        <div data-role="header">
+            <h1>Home</h1>
+            <a href="#popup-outside-page" data-rel="popup" class="ui-btn ui-btn-right ui-corner-all">Menu</a>
+        </div>
+        <!-- /header -->
+
+        <div role="main"  class="ui-content">
+            <h1>
+                <center>
+                   <img width="200px"src="img/Donut-Chart.png" alt="Donut diagram"/>
+                </center>
+                
+                <center>
+                   <h3>Sparemål</h3>
+                </center>
+                <p class="maal">Macbook - 1200/2000,-</p>
+                <p class="maal">Bil - 3000/12000,-</p>
+                <p class="maal">Ferie - 3000/8000,</p>
+            </h1>
+
+        </div>
+        <!-- /content -->
+
+        <div data-role="footer" data-id="foo1" data-position="fixed">
+	           <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home" data-icon="home">Min Økonomi</a></li>
+                        <li><a href="#list" data-icon="info">Budsjett</a></li>
+                        <li><a href="#belønning" data-icon="star">Belønninger</a></li>
+                    </ul>
+	           </div><!-- /navbar -->
+           </div><!-- /footer -->
+    </div>
+    <!-- /page -->
+
+    <!-- Start of second page -->
+    <div data-role="page" id="list">
+        <div data-role="header">
+            <h1>List</h1>
+
+            <a href="#popup-outside-page" data-rel="popup" class="ui-btn ui-btn-right ui-corner-all">Menu</a>
+
+        </div>
+        <!-- /header -->
+
+        <div role="main" class="ui-content">
+            <h1>
+                <div ></div>
+                <a href="#popupBasic" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">Legg til budsjett</a>
+                
+                <div data-role="popup" id="popupBasic">
+
+                    <p>Dette er en popup som kun vises på en side, kan inneholde informasjon om noe på siden eller actions man kan utføre</p>
+                    <input type="text" name="Navn på budsjett" id="budsjettNavn" placeholder="budsjett" data-wrapper-class="ui-custom" />
+                    <button onClick="addInnhold()">Legg til innhold</button>
+                </div>
+            </h1>
+
+            <ul data-role="listview" data-inset="true" id="mainList"></ul>
+
+            <ul id="liste" data-role="listview" data-inset="true">
+                <li>
+                    
+                </li>
+            </ul>
+        </div>
+        <!-- /content -->
+        
+
+          <div data-role="footer" data-id="foo1" data-position="fixed">
+	           <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home" data-icon="home">Min økonomi</a></li>
+                        <li><a href="#list" data-icon="info">Budsjett</a></li>
+                        <li><a href="#belønning" data-icon="star">Belønninger</a></li>
+                    </ul>
+	           </div><!-- /navbar -->
+           </div><!-- /footer -->
+        </div>
+        
+            <!-- Start of Third page -->
+    <div data-role="page" id="belønning">
+        <div data-role="header">
+            <h1>Belønninger</h1>
+
+            <a href="#popup-outside-page" data-rel="popup" class="ui-btn ui-btn-right ui-corner-all">Menu</a>
+
+        </div>
+        <!-- /header -->
+
+        <div role="main" class="ui-content">
+           
+        </div>
+        <!-- /content -->
+        
+
+          <div data-role="footer" data-id="foo1" data-position="fixed">
+	           <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home" data-icon="home">Min økonomi</a></li>
+                        <li><a href="#list" data-icon="info">Budsjett</a></li>
+                        <li><a href="#belønning" data-icon="star">Belønninger</a></li>
+                    </ul>
+	           </div><!-- /navbar -->
+           </div><!-- /footer -->
+        </div>
+
+        <script>
+            function login() {
+                var username = $("#username").val();
+                var password = $("#password").val();
+
+                console.log("username: " + username + ", password: " + password);
+
+                localStorage.username = username;
+                localStorage.password = password;
+
+            }
+
+            function addInnhold() {
+                console.log("added content")
+                var navn = $("#budsjettNavn").val();
+                $("#liste").append("<li>" + navn + "</li>");
+                $("#liste").listview("refresh");
+            }
+
+            function logout() {}
+           
+        </script>
+    </body>
+
+</html>
