@@ -47,7 +47,7 @@
                 </center>
                 <hr>
                 <input type="text" name="username" id="usernamePassword" placeholder="Epost" data-wrapper-class="ui-custom" />
-                <a href="#login" data-role="button" onClick="forgot()" id="loginBtn" data-transition="pop">Send passord</a>
+                <a href="#" data-role="button" onClick="forgot()" id="loginBtn">Send passord</a>
                 <hr>
             </div>
         </div>
@@ -133,6 +133,10 @@
             $(document).ready(function(){
                $("#gjentaPassord").keyup(verifyPassword); 
             });
+            
+            function forgot(){
+             window.location = "main.html#economy";
+            }
         </script>
 </body>
 </html>
