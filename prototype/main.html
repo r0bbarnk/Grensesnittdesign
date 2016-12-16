@@ -7,9 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="js/owl.carousel.css" rel="stylesheet">
+    <link href="js/owl.theme.css" rel="stylesheet">
+
     <script>
+
         /*function () {
                             $("[data-role=panel]").panel().enhanceWithin();
                         }
@@ -31,9 +36,12 @@
                 $(".ui-panel-wrapper").css("height", height - 100);
             });
         });
+        
 
         /*$("[data-role=page]").css('height', $(window).height());*/
+        
     </script>
+    
 
 </head>
 
@@ -51,15 +59,38 @@
             <h1>
                 <center>
                    <img width="200px"src="img/Donut-Chart.png" alt="Donut diagram"/>
-                </center>
                 
-                <center>
-                   <h3>Sparemål</h3>
+                
+                <div id="owl-demo" class="owl-carousel">
+                      <div class="frontView">
+                          <div class="economyitem">
+                          <p>Desember</p>
+                          <ul>
+            
+                            <li>Faste utgifter: <span>5500kr</span></li>
+            
+                            <li>Mat og drikke: <span>2000kr</span></li>
+            
+                            <li>Underholdning: <span>500kr</span></li>
+            
+                            <li>Sparing: <span>500kr</span></li>
+                
+                            <li>Andre utgifter: <span>1000kr</span></li>
+                          </ul>
+                      </div>
+                          </div>
+                    <div class="frontView">
+                      <div class="economyitem">
+                          <p>November</p>
+                      </div>
+                    </div>
+                    <div class="frontView">
+                      <div class="economyitem">
+                          <p>Oktober</p>
+                      </div>
+                        </div>
+                </div>
                 </center>
-                <p class="maal">Macbook - 1200/2000,-</p>
-                <p class="maal">Bil - 3000/12000,-</p>
-                <p class="maal">Ferie - 3000/8000,</p>
-            </h1>
 
         </div>
         <!-- /content -->
@@ -403,6 +434,8 @@
     </div>
     <!-- /sidePanel -->
 
+    <script src="js/assets/js/jquery-1.9.1.min.js"></script> 
+    <script src="js/owl.carousel.js"></script>
     <script>
         function addBudget() {
             console.log("added content")
@@ -433,8 +466,20 @@
 
         function logout() {}
         
-         function jump(){}
-    </script>
+        function jump(){}
+    
+            $(document).ready(function() {
+      $("#owl-demo").owlCarousel({
+        items : 3,
+        itemsMobile : [667,1],
+        pagination : false
+
+      });
+
+    });
+    
+</script>
+
 </body>
 
 </html>

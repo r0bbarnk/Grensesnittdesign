@@ -357,6 +357,16 @@
     font-size: 19px;
 }
 
+.economyitem p{
+    margin: 0px;   
+}
+
+.frontView ul, li{
+    list-style: none;
+    padding-left: 0px!important;
+
+}
+
 /*end footer*/
 
 /*iPhone < 5:*/
