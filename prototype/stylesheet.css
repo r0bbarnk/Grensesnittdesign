@@ -139,6 +139,27 @@
     text-indent: 2em;
 }
 
+.registerfields{
+    background-color: #007272!important;
+    color: white!important;
+    font-weight: lighter!important;
+    letter-spacing: 0.1em!important;
+    text-shadow: none!important;
+    float: left!important;
+    margin-bottom: 0.1em!important;
+    background-size: 1.5em!important;
+    margin-bottom: 15px!important;
+}
+
+.has-error{
+    background-color: firebrick!important;
+}
+
+.has-success{
+    background-color: greenyellow!important;
+}
+
+
 .maal {
     text-align: center;
     font-size: 1em;
