@@ -3,7 +3,7 @@
     src: url('fonts/Fedra-Sans-Std-Book_17248.ttf');
 }
 .ui-content{
-    padding: 0;
+    padding-top: 0;
 }
 #loginContent{
     font-family: Fedra-Sans-Std-Book;
@@ -139,7 +139,7 @@
     text-indent: 2em;
 }
 
-.maal{
+.maal {
     text-align: center;
     font-size: 1em;
     background-color: #007272;
@@ -152,91 +152,116 @@
     margin-top:-15px; 
 }
 
-
-.rewardsImg{
-    width: 60px;
-    padding: 5px;
+#budget {
+    background-color: white;
 }
 
-.rewardContainer{
-    width: 100%;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-#myProgress {
-    position: relative;
-    width: 100%;
-    height: 20px;
-    background-color: lightgray;
-}
-
-#myBar {
-    position: absolute;
-    width: 40%;
-    border: 2px solid white;
-    border-left: none;
-    height: 60%;
+#budgetMain {
     background-color: #007272;
-    margin-top: 2px;
+    height: 100vh !important;
 }
 
-#myBar2 {
-    position: absolute;
-    width: 26%;
-    border: 2px solid white;
-    border-left: none;
-    height: 60%;
+.header {
+    background-color: white !important;
+}
+.header h1 {
+    color: black;
+}
+#budget p {
+    color: white;
+}
+
+#addBudgetBtn {
     background-color: #007272;
-    margin-top: 2px;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: 0.1em;
+    text-shadow: none;
+    border-radius: 1em;
 }
-#myBar4 {
-    position: absolute;
-    width: 80%;
-    border: 2px solid white;
-    border-left: none;
-    height: 60%;
+
+#budgetLinks {
     background-color: #007272;
-    margin-top: 2px;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: 0.1em;
+    text-shadow: none;
+    border-radius: 1em;
+}
+#liste {
+    box-shadow: none;
+    background-color: transparent;
+}
+#liste li {
+    margin-bottom: 0.5em;
 }
 
-#myBar3 {
-    position: absolute;
-    width: 50%;
-    border: 2px solid white;
-    border-left: none;
-    height: 60%;
+/*budgetPage*/
+#budgetPageContent {
     background-color: #007272;
-    margin-top: 2px;
+    height: 100vh !important;
 }
-
-.textcontainer{
-    text-align: center;
+#budgetPageContent p {
+    color: white;
 }
-
-.textcontainer .rewardtext{
-    margin: 2px;
-    font-size: 20px;
-    margin-left: 0px;
-    font-weight: 700;
+.budgetPageList li{
+    border: 1px;
+    border-color: white;
+    background-color: #007272 !important;
+    color: white !important;
 }
-
-.textcontainer .xp{
-    margin: 2px;
-    font-size: 19px;
+.budgetPageList li span {
+    right: 0 !important;
 }
-
-.highlight{
-    background-color: aqua;
-}
-
-/*#facebookLogin{
-    //height: 2.5em;
-    height: 4vh;
-    width: auto;
-    display: block;
+.budgetBtn {
+    color: #007272!important;
+    width: 50vw;
+    left: 0;
+    right: 0;
     margin: auto;
-}*/
+    margin-bottom: 0.5em;
+}
+#budgetBtn1 {
+    margin-top: 0.5em;
+}
+/*footer*/
+.foo .ui-btn {
+    padding-top: 40px !important;
+}
+
+.foo .ui-btn:after {
+    width: 30px!important;
+    height: 30px!important;
+    margin-left: -15px !important;
+    box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+
+#economyFoo:after {
+    background: url("img/hand-holding-up-a-sack-of-money.png") 50% 50% no-repeat;
+    background-size: 24px 24px;
+}
+
+#budgetFoo:after {
+    background: url("img/pie-chart.png") 50% 50% no-repeat;
+    background-size: 24px 24px;
+}
+
+#rewardFoo:after {
+    background: url("img/medal.png") 50% 50% no-repeat;
+    background-size: 24px 24px;
+}
+
+#walletFoo:after {
+    background: url("img/wallet.png") 50% 50% no-repeat;
+    background-size: 24px 24px;
+}
+
+/*end footer*/
 
 /*iPhone < 5:*/
 @media screen and (device-aspect-ratio: 2/3) {}

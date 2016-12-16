@@ -1,97 +1,53 @@
 <!DOCTYPE html>
 <html>
 
-<head> 
+<head>
     <title>Student Budsjett</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        /*function () {
+                            $("[data-role=panel]").panel().enhanceWithin();
+                        }
 
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-
-    <script id="popup-outside-page-script">
-        // Instantiate the popup on DOMReady, and enhance its contents
+                        $(document).on("pagecreate", function () {
+                            $("[data-role=panel]").one("panelbeforeopen", function () {
+                                var height = $.mobile.pageContainer.pagecontainer("getActivePage").outerHeight();
+                                $(".ui-panel-wrapper").css("height", height + 1);
+                            });
+                        });*/
         $(function () {
-            $("#popup-outside-page").enhanceWithin().popup();
+            /*$("[data-role=header],[data-role=footer]").toolbar().enhanceWithin();*/
+            $("[data-role=panel]").panel().enhanceWithin();
         });
+
+        $(document).on("pagecreate", function () {
+            $("[data-role=panel]").one("panelbeforeopen", function () {
+                var height = $.mobile.pageContainer.pagecontainer("getActivePage").outerHeight();
+                $(".ui-panel-wrapper").css("height", height - 100);
+            });
+        });
+
+        /*$("[data-role=page]").css('height', $(window).height());*/
     </script>
+
 </head>
 
 <body>
 
-    <div id="popup-outside-page" data-theme="a">
-        <!-- This popup has its theme explicitly defined via data-theme="a"
-		     because it has no parent from which to automatically inherit
-		     its theme -->
-        <p>
-            Her kan man ha masse innhold
-        </p>
-        <ul data-role="listview">
-            <li>Global Menu</li>
+    <div data-role="page" id="economy" data-add-back-btn="true">
 
-            <li>
-                <a href="#login">Login Page</a>
-            </li>
-            <li>
-                <a href="#summary">Oversikt</a>
-            </li>
-            <li>
-                <a href="#third-page">Third Page</a>
-            </li>
-        </ul>
-    </div>
-
-    <div data-role="page" id="login">
-        <div role="main" class="ui-content" id="loginContent">
-            <center><a id="createUser" href="#create"><span>Klikk her</span> for å opprette en konto</a></center>
-            <hr>
-            <input type="text" name="username" id="username" placeholder="Brukernavn" data-wrapper-class="ui-custom" />
-            <input type="password" name="password" id="password" value="" placeholder="Passord" data-wrapper-class="ui-custom" />
-            <a href="#forgot" id="forgotLink">Glemt passord?</a>
-            <br>
-            <a href="#home" data-role="button" onClick="login()" id="loginBtn" data-transition="flip">LOGG INN</a>
-            <hr>
-            <!--<a href="#"><img alt="facebookLogin" src="img/Facebook-kopi%202.png" id="facebookLogin"></a>-->
-        </div>
-        <!-- /content -->
-        <div role="img" id="loginBackground">
-        </div>
-    </div>
-    <!-- /page -->
-    
-    <!-- Glemt passord -->
-    <div data-role="page" id="forgot">
-            
-        <div data-role="header">
-            <h1>Glemt passord</h1>
-            <a data-rel="back"> < </a>
-        </div>
-        <!-- /header -->
-            
-        <div role="main" class="password" id="forgotContent">
-           <center><p id="createUser" href="#create">Fyll inn din epost og få tilsendt nytt passord</p></center>
-            <hr>
-            <input type="text" name="username" id="usernamePassword" placeholder="Epost" data-wrapper-class="ui-custom" />
-            <a href="#login" data-role="button" onClick="forgot()" id="loginBtn" data-transition="flip">Send passord</a>
-            <hr>
-        </div>
-        <!-- /content -->
-
-        <!-- /content -->
-    </div>
-    <!-- / end glemt passord -->
-
-    <div data-role="page" id="home" data-add-back-btn="true">
-
-        <div data-role="header">
-            <h1>Home</h1>
-            <a href="#popup-outside-page" data-rel="popup" class="ui-btn ui-btn-right ui-corner-all">Menu</a>
+        <div data-role="header" class="header" data-position="fixed">
+            <h1>Min økonomi</h1>
+            <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-gear ui-btn-icon-notext ui-shadow ui-corner-all"></a>
         </div>
         <!-- /header -->
 
-        <div role="main"  class="ui-content">
+        <div role="main" class="ui-content">
             <h1>
                 <center>
                    <img width="200px"src="img/Donut-Chart.png" alt="Donut diagram"/>
@@ -107,179 +63,312 @@
 
         </div>
         <!-- /content -->
+        <!-- footer -->
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+            <div data-role="navbar" class="foo" data-grid="c">
+                <ul>
+                    <li><a href="#economy" id="economyFoo" data-icon="custom" class="ui-btn-active ui-state-persist" data-transition="none">Min Økonomi</a></li>
 
-        <div data-role="footer" data-id="foo1" data-position="fixed">
-	           <div data-role="navbar">
-                    <ul>
-                        <li><a href="#home" data-icon="home">Min Økonomi</a></li>
-                        <li><a href="#list" data-icon="info">Budsjett</a></li>
-                        <li><a href="#reward" data-icon="star">Belønninger</a></li>
-                    </ul>
-	           </div><!-- /navbar -->
-           </div><!-- /footer -->
+                    <li><a href="#budget" id="budgetFoo" data-icon="custom" data-transition="none">Budsjett</a></li>
+
+                    <li><a href="#wallet" id="walletFoo" data-icon="custom" data-transition="none">Lommebok</a></li>
+
+                    <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /footer -->
     </div>
     <!-- /page -->
 
     <!-- Start of second page -->
-    <div data-role="page" id="list">
-        <div data-role="header">
-            <h1>List</h1>
-
-            <a href="#popup-outside-page" data-rel="popup" class="ui-btn ui-btn-right ui-corner-all">Menu</a>
-
+    <div data-role="page" id="budget">
+        <div data-role="header" class="header" data-position="fixed">
+            <h1>Budsjett</h1>
+            <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-gear ui-btn-icon-notext ui-shadow ui-corner-all"></a>
         </div>
         <!-- /header -->
 
-        <div role="main" class="ui-content">
-            <h1>
-                <div ></div>
-                <a href="#popupBasic" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">Legg til budsjett</a>
-                
-                <div data-role="popup" id="popupBasic">
+        <div role="main" class="ui-content" id="budgetMain">
+            <br>
+            <a href="#addBudgetPop" id="addBudgetBtn" data-rel="popup" data-role="button" data-position-to="window" data-icon="plus" data-transition="pop" data-iconpos="right">Legg til budsjett</a>
 
-                    <p>Dette er en popup som kun vises på en side, kan inneholde informasjon om noe på siden eller actions man kan utføre</p>
-                    <input type="text" name="Navn på budsjett" id="budsjettNavn" placeholder="budsjett" data-wrapper-class="ui-custom" />
-                    <button onClick="addInnhold()">Legg til innhold</button>
-                </div>
-            </h1>
-
+            <div data-role="popup" id="addBudgetPop" data-position-to="window" class="ui-content">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
+                <h1>Fyll inn budsjettet</h1>
+                <input type="text" name="Navn på budsjett" id="budgetName" placeholder="Navn på budsjett" />
+                <input type="number" name="Inntekter" id="income" placeholder="Inntekter i Kr" />
+                <input type="number" name="Faste utgifter" id="outcome" placeholder="Faste utgifter i Kr" />
+                <input type="number" name="Mat og drikke" id="budgetFood" placeholder="Mat og drikke i Kr" />
+                <input type="number" name="Underholdning" id="budgetEntertainment" placeholder="Underholdning i Kr" />
+                <input type="number" name="Sparing" id="budgetSavings" placeholder="Sparing i Kr" />
+                <input type="number" name="Andre utgifter" id="budgetOther" placeholder="Andre utgifter i Kr" />
+                <button onClick="addBudget()">Legg til budsjett</button>
+            </div>
+            <center>
+                <p>Budsjetter:</p>
+            </center>
             <ul data-role="listview" data-inset="true" id="mainList"></ul>
 
             <ul id="liste" data-role="listview" data-inset="true">
-                <li>
-                    
-                </li>
+                <li><a id="budgetLinks" href="#budgetPageOkt" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Oktober 2016</a></li>
+                <li><a id="budgetLinks" href="#budgetPageNov" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">November 2016</a></li>
+                <li><a id="budgetLinks" href="#budgetPageDes" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Desember 2016</a></li>
             </ul>
         </div>
         <!-- /content -->
-        
 
-          <div data-role="footer" data-id="foo1" data-position="fixed">
-	           <div data-role="navbar">
-                    <ul>
-                        <li><a href="#home" data-icon="home">Min økonomi</a></li>
-                        <li><a href="#list" data-icon="info">Budsjett</a></li>
-                        <li><a href="#reward" data-icon="star">Belønninger</a></li>
-                    </ul>
-	           </div><!-- /navbar -->
-           </div><!-- /footer -->
+        <!-- footer -->
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+            <div data-role="navbar" class="foo" data-grid="c">
+                <ul>
+                    <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
+
+                    <li><a href="#budget" id="budgetFoo" data-icon="custom" class="ui-btn-active ui-state-persist" data-transition="none">Budsjett</a></li>
+
+                    <li><a href="#wallet" id="walletFoo" data-icon="custom" data-transition="none">Lommebok</a></li>
+
+                    <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
+                </ul>
+            </div>
         </div>
-        
-            <!-- Start of Third page -->
-    <div data-role="page" id="reward">
-        <div data-role="header">
-            <h1>Belønninger</h1>
-            
-            <a href="#popup-outside-page" data-rel="popup" class="ui-btn ui-btn-right ui-corner-all">Menu</a>
+        <!-- /footer -->
+    </div>
 
+    <!-- reward -->
+    <div data-role="page" id="reward">
+        <div data-role="header" class="header" data-position="fixed">
+            <h1>Belønninger</h1>
+            <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-gear ui-btn-icon-notext ui-shadow ui-corner-all"></a>
         </div>
         <!-- /header -->
 
         <div role="main" class="ui-content">
-            <div class = "rewardContainer">
-                <a href="#" onclick="jump()"><img src="img/coin-1.png" alt="silver coin" class="rewardsImg"></img></a>
-            <img src="img/coin.png" alt="Golden Coin" class="rewardsImg"></img>
-            <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-            <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
-            <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-        </div>
-        <div class="textcontainer">
-            <span class="rewardtext" id="save">Flink</span>
-            <span class="xp">350/1000</span>
-        </div>   
-        <div id="myProgress">
-          <div id="myBar"></div>
-        </div>
-        <div class = "rewardContainer">
-            <img src="img/celebration.png" alt="lock" class="rewardsImg"></img>
-                 <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-             <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-        
-        <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
-    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-    </div>
-<div class="textcontainer">
-            <span class="rewardtext" id="party">Champis</span>
-            <span class="xp">200/500</span>
-        </div>
-        <div id="myProgress">
-          <div id="myBar2"></div>
-        </div>
-<div class = "rewardContainer">
-            <img src="img/carrot.png" alt="lock" class="rewardsImg"></img>
-                 <img src="img/apple.png" alt="lock" class="rewardsImg"></img>
-             <img src="img/broccoli.png" alt="lock" class="rewardsImg"></img>
-        
-        <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
-    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-    </div>
-<div class="textcontainer">
-            <span class="rewardtext" id="food">Firt price</span>
-            <span class="xp">400/1000</span>
-        </div>        
-
-        <div id="myProgress">
-          <div id="myBar3"></div>
-        </div>
-<div class = "rewardContainer">
-            <img src="img/bicycle.png" alt="lock" class="rewardsImg"></img>
-                 <img src="img/school-bus.png" alt="lock" class="rewardsImg"></img>
-             <img src="img/tractor.png" alt="lock" class="rewardsImg"></img>
-        
-        <img src="img/aeroplane.png" alt="lock" class="rewardsImg"></img> 
-    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-    </div>
-<div class="textcontainer">
-  <span class="rewardtext" id="transport">Kaptein</span>
-            <span class="xp">800/1200</span>
-        </div>       
-        <div id="myProgress">
-          <div id="myBar4"></div>
-        </div>
 
         </div>
         <!-- /content -->
-        
 
-          <div data-role="footer" data-id="foo1" data-position="fixed">
-	           <div data-role="navbar">
-                    <ul>
-                        <li><a href="#home" data-icon="home">Min økonomi</a></li>
-                        <li><a href="#list" data-icon="info">Budsjett</a></li>
-                        <li><a href="#reward" data-icon="star">Belønninger</a></li>
-                    </ul>
-	           </div><!-- /navbar -->
-           </div><!-- /footer -->
+        <!-- footer -->
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+            <div data-role="navbar" class="foo" data-grid="c">
+                <ul>
+                    <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
+
+                    <li><a href="#budget" id="budgetFoo" data-icon="custom" data-transition="none">Budsjett</a></li>
+
+                    <li><a href="#wallet" id="walletFoo" data-icon="custom" data-transition="none">Lommebok</a></li>
+
+                    <li><a href="#reward" id="rewardFoo" data-icon="custom" class="ui-btn-active ui-state-persist" data-transition="none">Belønninger</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /footer -->
+    </div>
+    <!-- /reward -->
+    <!-- budgetPage -->
+    <div data-role="page" id="budgetPage">
+        <div data-role="header" id="budgetPageHeader" class="header" data-position="fixed">
+            <!--<a href="#outside" class="ui-btn-left ui-link ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all"></a>-->
+            <a href="#" data-rel="back" class="ui-btn-left ui-link ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all"></a>
+        </div>
+        <!-- /header -->
+
+        <div role="main" class="ui-content" id="budgetPageContent">
+
+        </div>
+        <!-- /content -->
+
+        <!-- footer -->
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+            <div data-role="navbar" class="foo" data-grid="c">
+                <ul>
+                    <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
+
+                    <li><a href="#budget" id="budgetFoo" data-icon="custom" data-transition="none">Budsjett</a></li>
+
+                    <li><a href="#wallet" id="walletFoo" data-icon="custom" data-transition="none">Lommebok</a></li>
+
+                    <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
+                </ul>
+            </div>
         </div>
 
-        <script>
-            function login() {
-                var username = $("#username").val();
-                var password = $("#password").val();
+        <!-- /footer -->
+    </div>
+    <!-- /budgetPage -->
+    <!-- budgetPageOkt -->
+    <div data-role="page" id="budgetPageOkt">
+        <div data-role="header" id="budgetPageHeader" class="header" data-position="fixed">
+            <!--<a href="#outside" class="ui-btn-left ui-link ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all"></a>-->
+            <a href="#" data-rel="back" class="ui-btn-left ui-link ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all"></a>
+        </div>
+        <!-- /header -->
 
-                console.log("username: " + username + ", password: " + password);
+        <div role="main" class="ui-content" id="budgetPageContent">
 
-                localStorage.username = username;
-                localStorage.password = password;
+        </div>
+        <!-- /content -->
 
-            }
+        <!-- footer -->
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+            <div data-role="navbar" class="foo" data-grid="c">
+                <ul>
+                    <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
 
-            function addInnhold() {
-                console.log("added content")
-                var navn = $("#budsjettNavn").val();
-                $("#liste").append("<li>" + navn + "</li>");
-                $("#liste").listview("refresh");
-            }
+                    <li><a href="#budget" id="budgetFoo" data-icon="custom" data-transition="none">Budsjett</a></li>
+
+                    <li><a href="#wallet" id="walletFoo" data-icon="custom" data-transition="none">Lommebok</a></li>
+
+                    <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- /footer -->
+    </div>
+    <!-- /budgetPageOkt -->
+    <!-- budgetPageNov -->
+    <div data-role="page" id="budgetPageNov">
+        <div data-role="header" id="budgetPageHeader" class="header" data-position="fixed">
+            <!--<a href="#outside" class="ui-btn-left ui-link ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all"></a>-->
+            <a href="#" data-rel="back" class="ui-btn-left ui-link ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all"></a>
+        </div>
+        <!-- /header -->
+
+        <div role="main" class="ui-content" id="budgetPageContent">
+
+        </div>
+        <!-- /content -->
+
+        <!-- footer -->
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+            <div data-role="navbar" class="foo" data-grid="c">
+                <ul>
+                    <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
+
+                    <li><a href="#budget" id="budgetFoo" data-icon="custom" data-transition="none">Budsjett</a></li>
+
+                    <li><a href="#wallet" id="walletFoo" data-icon="custom" data-transition="none">Lommebok</a></li>
+
+                    <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- /footer -->
+    </div>
+    <!-- /budgetPageNov -->
+    <!-- budgetPageDes -->
+    <div data-role="page" id="budgetPageDes">
+        <div data-role="header" id="budgetPageHeader" class="header" data-position="fixed">
+            <!--<a href="#outside" class="ui-btn-left ui-link ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all"></a>-->
+            <h1> Desember 2016</h1>
+            <a href="#" data-rel="back" class="ui-btn-left ui-link ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all"></a>
+        </div>
+        <!-- /header -->
+
+        <div role="main" class="ui-content" id="budgetPageContent">
+            <center><p>Inntekter</p></center>
+            <br>
+            <ul data-role="listview" class="budgetPageList">
             
-            function jump() {
-                $("img").on("click", function(){
-                    $(this).toggleClass("highlight");
-                });
-            }
+                <li>Inntekter: <span>10.000kr</span></li>
+    
+            </ul>
+            <br>
+            <center><p>Utgifter</p></center>
+            <br>
+            <ul data-role="listview" class="budgetPageList">
+            
+                <li>Faste utgifter: <span>5500kr</span></li>
+            
+                <li>Mat og drikke: <span>2000kr</span></li>
+            
+                <li>Underholdning: <span>500kr</span></li>
+            
+                <li>Sparing: <span>500kr</span></li>
+                
+                <li>Andre utgifter: <span>1000kr</span></li>
+            </ul>
+            <br>
+            <a href="#budget" data-role="button" onClick="useBudget()" class="budgetBtn" id="budgetBtn1" data-transition="slide">BRUK</a>
+            <a href="#budget" data-role="button" onClick="changeBudget()" class="budgetBtn" data-transition="slide">ENDRE</a>
+            <a href="#budget" data-role="button" onClick="deleteBudget()" class="budgetBtn" data-transition="slide">SLETT</a>
+        </div>
+        <!-- /content -->
 
-            function logout() {}
-           
-        </script>
-    </body>
+        <!-- footer -->
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+            <div data-role="navbar" class="foo" data-grid="c">
+                <ul>
+                    <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
+
+                    <li><a href="#budget" id="budgetFoo" data-icon="custom" data-transition="none">Budsjett</a></li>
+
+                    <li><a href="#wallet" id="walletFoo" data-icon="custom" data-transition="none">Lommebok</a></li>
+
+                    <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- /footer -->
+    </div>
+    <!-- /budgetPageDes -->
+
+    <!-- sidePanel -->
+    <div data-role="panel" id="sidePanel" data-theme="a" class="ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open">
+        <div class="ui-panel-inner">
+            <ul data-role="listview" class="ui-listview">
+                <li data-icon="back" class="ui-first-child">
+                    <a href="#" data-rel="close" class="ui-btn ui-btn-icon-right ui-icon-back">
+                        Innstillinger
+                    </a>
+                </li>
+                <li class="ui-li-static ui-body-inherit">
+                    test1
+                </li>
+                <li class="ui-li-static ui-body-inherit">
+                    test2
+                </li>
+                <li class="ui-li-static ui-body-inherit">
+                    test3
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /sidePanel -->
+
+    <script>
+        function addBudget() {
+            console.log("added content")
+            var name = $("#budgetName").val();
+            var income = $("#income").val();
+            var outcome = $("#outcome").val();
+            var food = $("#budgetFood").val();
+            var entertainment = $("#budgetEntertainment").val();
+            var savings = $("#budgetSavings").val();
+            var other = $("#budgetOther").val();
+            console.log("Navn: " + name + ", Inntekter: " + income + ", Faste Utgifter: " + outcome +
+                ", Mat og drikke: " + food + ", Underholdning: " + entertainment +
+                ", Sparing: " + savings + ", Andre utgifter: " + other);
+            $("#liste").append("<li><a id='budgetLinks' href='#budgetPage' data-role='button' data-icon='carat-r' data-iconpos='right'>" + name + "</a></li>");
+            $("#liste").listview("refresh");
+            $("#budgetPageHeader").append("<h1>" + name + "</h1>");
+            $("#budgetPageContent").append("<p>test<p>");
+            $("#addBudgetPop").popup("close");
+
+            localStorage.bugdetName = name;
+            localStorage.income = income;
+            localStorage.outcome = outcome;
+            localStorage.food = food;
+            localStorage.entertainment = entertainment;
+            localStorage.savings = savings;
+            localStorage.other = other;
+        }
+
+        function logout() {}
+    </script>
+</body>
 
 </html>
