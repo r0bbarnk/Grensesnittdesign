@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
         $(function () {
@@ -21,6 +22,12 @@
                 $(".ui-panel-wrapper").css("height", height - 100);
             });
         });
+        
+        $( function() {
+    $( "#progressbar" ).progressbar({
+      value: 50
+    });
+  } );
     </script>
     <script type="text/javascript">
         google.charts.load("current", {
@@ -44,9 +51,9 @@
                     width: '80%',
                     height: '80%'
                 },
-                pieHole: 0.7,
+                pieHole: 0.5,
                 pieStartAngle: 130,
-                fontSize: 10,
+                fontSize: 11,
                 colors: ['#013532', '#014441', '#024F4b', '#015B56', '#006865', '#007272'],
             };
 
@@ -111,7 +118,7 @@
         <div role="main" class="ui-content" id="budgetMain">
             <br>
             <center><img src="img/pie-chart.png" alt="budgets" id="walletImg"></center>
-            <a href="#addBudgetPop" id="addBudgetBtn" data-rel="popup" data-role="button" data-position-to="window" data-icon="plus" data-transition="pop" data-iconpos="right">Legg til budsjett</a>
+            <!--<a href="#addBudgetPop" id="addBudgetBtn" data-rel="popup" data-role="button" data-position-to="window" data-icon="plus" data-transition="pop" data-iconpos="right">Legg til budsjett</a>-->
 
             <div data-role="popup" id="addBudgetPop" data-position-to="window" class="ui-content">
                 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
@@ -127,7 +134,7 @@
                 <button onClick="addBudget()">Legg til budsjett</button>
             </div>
             <center>
-                <p>Budsjetter</p>
+                <p>BUDSJETTER</p>
             </center>
             <ul data-role="listview" data-inset="true" id="mainList"></ul>
 
@@ -137,19 +144,19 @@
                         <p>9.500<span class="kr"> KR </span>/ 10.000<span class="kr"> KR</span></p>
                     </center>
                 </li>
-                <li><a id="budgetLinks" href="#budgetPageOkt" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Oktober 2016</a></li>
+                <li><a id="budgetLinks" href="#budgetPageOkt" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Oktober 2016  <span class="budgetResult">+ 500</span></a></li>
                 <li id="listeText">
                     <center>
                         <p>10.500<span class="kr"> KR </span>/ 12.000<span class="kr"> KR</span></p>
                     </center>
                 </li>
-                <li><a id="budgetLinks" href="#budgetPageNov" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">November 2016</a></li>
+                <li><a id="budgetLinks" href="#budgetPageNov" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">November 2016 <span class="budgetResult">+ 1500</span></a></li>
                 <li id="listeText">
                     <center>
                         <p>9.500<span class="kr"> KR </span>/ 10.000<span class="kr"> KR</span></p>
                     </center>
                 </li>
-                <li><a id="budgetLinks" href="#budgetPageDes" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Desember 2016</a></li>
+                <li><a id="budgetLinks" href="#budgetPageDes" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Desember 2016 <span class="budgetResult">+ 500</span></a></li>
             </ul>
             <center>
                 <a id="addBtnPlus" data-role="button" data-rel="popup" href="#addBudgetPop" data-icon="custom" data-transition="pop"></a>
@@ -177,7 +184,7 @@
     <!-- Start of wallet page -->
     <div data-role="page" id="wallet">
         <div data-role="header" class="header" data-position="fixed">
-            <h1>Budsjett</h1>
+            <h1>Lommebok</h1>
             <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-panelicon ui-btn-icon-notext ui-shadow ui-corner-all" id="panelBtn"></a>
         </div>
         <!-- /header -->
@@ -185,20 +192,27 @@
         <div role="main" class="ui-content" id="walletMain">
             <br>
             <center><img src="img/wallet.png" alt="wallet" id="walletImg"></center>
-            <a href="#addExpensesPop" id="addBudgetBtn" data-rel="popup" data-role="button" data-position-to="window" data-icon="plus" data-transition="pop" data-iconpos="right">legg til dine utgifter</a>
+            <center>
+                <h1>6.000 <span class="kr">KR</span> / 12.000 <span class="kr">KR</span></h1>
+            </center>
+            <div id="progressbar">
+            </div>
 
             <div data-role="popup" id="addExpensesPop" data-position-to="window" class="ui-content">
                 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
-                <h1>Fyll inn</h1>
-                <input type="text" name="Navn på budsjett" id="budgetName" placeholder="Navn på budsjett" />
-                <input type="number" name="Inntekter" id="income" placeholder="Inntekter i Kr" />
-                <input type="number" name="Faste utgifter" id="outcome" placeholder="Faste utgifter i Kr" />
-                <input type="number" name="Mat og drikke" id="budgetFood" placeholder="Mat og drikke i Kr" />
-                <input type="number" name="Transport" id="budgetTrans" placeholder="Transportutgifter i Kr" />
-                <input type="number" name="Underholdning" id="budgetEntertainment" placeholder="Underholdning i Kr" />
-                <input type="number" name="Sparing" id="budgetSavings" placeholder="Sparing i Kr" />
-                <input type="number" name="Andre utgifter" id="budgetOther" placeholder="Andre utgifter i Kr" />
-                <button onClick="addExpense()">Legg til utgifter</button>
+                <h1>Ny utgift</h1>
+                <input type="text" name="Navn på utgift" id="item" placeholder="Hva kjøpte du?" />
+                <input type="number" name="Pris" id="price" placeholder="Pris i Kr" />
+                <label for="select-choice-1" class="select">Velg en kategori</label>
+<select name="select-choice-1" id="select-choice-1">
+    <option value="food">Mat og drikke</option>
+    <option value="trans">Transport</option>
+    <option value="entertainment">Underholdning</option>
+    <option value="saving">Sparing</option>
+    <option value="other">Annet</option>
+</select>
+                <input type="text" name="Butikk" id="shop" placeholder="Hvor kjøpte du det?" />
+                <button onClick="addExpense()">Legg til kjøp</button>
             </div>
             <center>
                 <p>Utgifter i 'Desember 2016'</p>
@@ -207,19 +221,22 @@
 
             <ul id="liste" data-role="listview" data-inset="true">
                 <li id="listeText">
-                    <center>
-                        <p>9.500<span class="kr"> KR </span>/ 10.000<span class="kr"> KR</span></p>
-                    </center>
+                        <p>Kiwi-Mat og drikke-Handlevarer:<span class="walletLog">568 KR</span></p>
                 </li>
                 <li id="listeText">
-                    <center>
-                        <p>10.500<span class="kr"> KR </span>/ 12.000<span class="kr"> KR</span></p>
-                    </center>
+                        <p>Colusseum-Underholdning-2 kinobilletter:<span class="walletLog">240 KR</span></p>
                 </li>
                 <li id="listeText">
-                    <center>
-                        <p>9.500<span class="kr"> KR </span>/ 10.000<span class="kr"> KR</span></p>
-                    </center>
+                    <p>Balkan-Mat og drikke-Kebab og brus:<span class="walletLog">140 KR</span></p>
+                </li>
+                <li id="listeText">
+                    <p>Apple.no-Annet-Macbook pro:<span class="walletLog">15000 KR</span></p>
+                </li>
+                <li id="listeText">
+                    <p>Annet-420:<span class="walletLog">500 KR</span></p>
+                </li>
+                <li id="listeText">
+                    <p>4Sound-Annet-Gitar:<span class="walletLog">1400 KR</span></p>
                 </li>
             </ul>
             <center>
