@@ -7,26 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <link href="js/owl.carousel.css" rel="stylesheet">
-    <link href="js/owl.theme.css" rel="stylesheet">
-
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-
-        /*function () {
-                            $("[data-role=panel]").panel().enhanceWithin();
-                        }
-
-                        $(document).on("pagecreate", function () {
-                            $("[data-role=panel]").one("panelbeforeopen", function () {
-                                var height = $.mobile.pageContainer.pagecontainer("getActivePage").outerHeight();
-                                $(".ui-panel-wrapper").css("height", height + 1);
-                            });
-                        });*/
         $(function () {
-            /*$("[data-role=header],[data-role=footer]").toolbar().enhanceWithin();*/
             $("[data-role=panel]").panel().enhanceWithin();
         });
 
@@ -36,67 +21,70 @@
                 $(".ui-panel-wrapper").css("height", height - 100);
             });
         });
-        
-
-        /*$("[data-role=page]").css('height', $(window).height());*/
-        
     </script>
-    
+    <script type="text/javascript">
+        google.charts.load("current", {
+            packages: ["corechart"]
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+          ['Utgifter', 'Antall i KR'],
+          ['Faste utgifter', 6000], ['Mat og drikke', 2000], ['Transport', 500],
+          ['Underholdning', 500], ['Sparing', 500], ['Andre utgifter', 1000]
+        ]);
+
+            var options = {
+                legend: 'none',
+                is3d: true,
+                pieSliceText: 'label',
+                backgroundColor: 'transparent',
+                chartArea: {
+                    width: '80%',
+                    height: '80%'
+                },
+                pieHole: 0.7,
+                pieStartAngle: 130,
+                fontSize: 10,
+                colors: ['#013532', '#014441', '#024F4b', '#015B56', '#006865', '#007272'],
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chartContainer'));
+            chart.draw(data, options);
+        }
+    </script>
 
 </head>
 
-<body>
-
+<body onload="init()">
+    <!-- Start of My economy page -->
     <div data-role="page" id="economy" data-add-back-btn="true">
 
         <div data-role="header" class="header" data-position="fixed">
             <h1>Min økonomi</h1>
-            <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-gear ui-btn-icon-notext ui-shadow ui-corner-all"></a>
+            <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-panelicon ui-btn-icon-notext ui-shadow ui-corner-all" id="panelBtn"></a>
         </div>
         <!-- /header -->
 
-        <div role="main" class="ui-content">
-            <h1>
-                <center>
-                   <img width="200px"src="img/Donut-Chart.png" alt="Donut diagram"/>
-                
-                
-                <div id="owl-demo" class="owl-carousel">
-                      <div class="frontView">
-                          <div class="economyitem">
-                          <p>Desember</p>
-                          <ul>
-            
-                            <li>Faste utgifter: <span>5500kr</span></li>
-            
-                            <li>Mat og drikke: <span>2000kr</span></li>
-            
-                            <li>Underholdning: <span>500kr</span></li>
-            
-                            <li>Sparing: <span>500kr</span></li>
-                
-                            <li>Andre utgifter: <span>1000kr</span></li>
-                          </ul>
-                      </div>
-                          </div>
-                    <div class="frontView">
-                      <div class="economyitem">
-                          <p>November</p>
-                      </div>
-                    </div>
-                    <div class="frontView">
-                      <div class="economyitem">
-                          <p>Oktober</p>
-                      </div>
-                        </div>
-                </div>
-                </center>
+        <div role="main" class="ui-content" id="economyContent">
+            <center>
+                <div id="chartContainer"></div>
+                <center><img src="img/hand-holding-up-a-sack-of-money.png" alt="budgets" id="ecoImg"></center>
+            </center>
+
+            <center>
+                <h3>Sparemål</h3>
+            </center>
+            <p class="maal">Macbook - 1200/2000,-</p>
+            <p class="maal">Bil - 3000/12000,-</p>
+            <p class="maal">Ferie - 3000/8000,</p>
 
         </div>
         <!-- /content -->
         <!-- footer -->
-        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
-            <div data-role="navbar" class="foo" data-grid="c">
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed" data-tap-toggle="false">
+            <div data-role="navbar" class="foo" data-grid="c" data-position="fixed">
                 <ul>
                     <li><a href="#economy" id="economyFoo" data-icon="custom" class="ui-btn-active ui-state-persist" data-transition="none">Min Økonomi</a></li>
 
@@ -110,18 +98,19 @@
         </div>
         <!-- /footer -->
     </div>
-    <!-- /page -->
+    <!-- /economy -->
 
-    <!-- Start of second page -->
+    <!-- Start of budget page -->
     <div data-role="page" id="budget">
         <div data-role="header" class="header" data-position="fixed">
             <h1>Budsjett</h1>
-            <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-gear ui-btn-icon-notext ui-shadow ui-corner-all"></a>
+            <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-panelicon ui-btn-icon-notext ui-shadow ui-corner-all" id="panelBtn"></a>
         </div>
         <!-- /header -->
 
         <div role="main" class="ui-content" id="budgetMain">
             <br>
+            <center><img src="img/pie-chart.png" alt="budgets" id="walletImg"></center>
             <a href="#addBudgetPop" id="addBudgetBtn" data-rel="popup" data-role="button" data-position-to="window" data-icon="plus" data-transition="pop" data-iconpos="right">Legg til budsjett</a>
 
             <div data-role="popup" id="addBudgetPop" data-position-to="window" class="ui-content">
@@ -131,26 +120,45 @@
                 <input type="number" name="Inntekter" id="income" placeholder="Inntekter i Kr" />
                 <input type="number" name="Faste utgifter" id="outcome" placeholder="Faste utgifter i Kr" />
                 <input type="number" name="Mat og drikke" id="budgetFood" placeholder="Mat og drikke i Kr" />
+                <input type="number" name="Transport" id="budgetTrans" placeholder="Transportutgifter i Kr" />
                 <input type="number" name="Underholdning" id="budgetEntertainment" placeholder="Underholdning i Kr" />
                 <input type="number" name="Sparing" id="budgetSavings" placeholder="Sparing i Kr" />
                 <input type="number" name="Andre utgifter" id="budgetOther" placeholder="Andre utgifter i Kr" />
                 <button onClick="addBudget()">Legg til budsjett</button>
             </div>
             <center>
-                <p>Budsjetter:</p>
+                <p>Budsjetter</p>
             </center>
             <ul data-role="listview" data-inset="true" id="mainList"></ul>
 
             <ul id="liste" data-role="listview" data-inset="true">
+                <li id="listeText">
+                    <center>
+                        <p>9.500<span class="kr"> KR </span>/ 10.000<span class="kr"> KR</span></p>
+                    </center>
+                </li>
                 <li><a id="budgetLinks" href="#budgetPageOkt" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Oktober 2016</a></li>
+                <li id="listeText">
+                    <center>
+                        <p>10.500<span class="kr"> KR </span>/ 12.000<span class="kr"> KR</span></p>
+                    </center>
+                </li>
                 <li><a id="budgetLinks" href="#budgetPageNov" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">November 2016</a></li>
+                <li id="listeText">
+                    <center>
+                        <p>9.500<span class="kr"> KR </span>/ 10.000<span class="kr"> KR</span></p>
+                    </center>
+                </li>
                 <li><a id="budgetLinks" href="#budgetPageDes" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Desember 2016</a></li>
             </ul>
+            <center>
+                <a id="addBtnPlus" data-role="button" data-rel="popup" href="#addBudgetPop" data-icon="custom" data-transition="pop"></a>
+            </center>
         </div>
         <!-- /content -->
 
         <!-- footer -->
-        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed" data-tap-toggle="false">
             <div data-role="navbar" class="foo" data-grid="c">
                 <ul>
                     <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
@@ -165,86 +173,94 @@
         </div>
         <!-- /footer -->
     </div>
-
-    <!-- reward -->
-    <div data-role="page" id="reward">
+    <!-- /budget -->
+    <!-- Start of wallet page -->
+    <div data-role="page" id="wallet">
         <div data-role="header" class="header" data-position="fixed">
-            <h1>Belønninger</h1>
-            <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-gear ui-btn-icon-notext ui-shadow ui-corner-all"></a>
+            <h1>Budsjett</h1>
+            <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-panelicon ui-btn-icon-notext ui-shadow ui-corner-all" id="panelBtn"></a>
         </div>
         <!-- /header -->
 
-        <div role="main" class="ui-content">
-                
-        <div role="main" class="ui-content">
-            <div class = "rewardContainer">
-                <a href="#" onclick="jump()"><img src="img/coin-1.png" alt="silver coin" class="rewardsImg"></img></a>
-            <img src="img/coin.png" alt="Golden Coin" class="rewardsImg"></img>
-            <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-            <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
-            <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-        </div>
-        <div class="textcontainer">
-            <span class="rewardtext" id="save">Flink</span>
-            <span class="xp">350/1000</span>
-        </div>   
-        <div id="myProgress">
-          <div id="myBar"></div>
-        </div>
-        <div class = "rewardContainer">
-            <img src="img/celebration.png" alt="lock" class="rewardsImg"></img>
-                 <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-             <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-        
-        <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
-    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-    </div>
-<div class="textcontainer">
-            <span class="rewardtext" id="party">Champis</span>
-            <span class="xp">200/500</span>
-        </div>
-        <div id="myProgress">
-          <div id="myBar2"></div>
-        </div>
-<div class = "rewardContainer">
-            <img src="img/carrot.png" alt="lock" class="rewardsImg"></img>
-                 <img src="img/apple.png" alt="lock" class="rewardsImg"></img>
-             <img src="img/broccoli.png" alt="lock" class="rewardsImg"></img>
-        
-        <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
-    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-    </div>
-<div class="textcontainer">
-            <span class="rewardtext" id="food">Firt price</span>
-            <span class="xp">400/1000</span>
-        </div>        
+        <div role="main" class="ui-content" id="walletMain">
+            <br>
+            <center><img src="img/wallet.png" alt="wallet" id="walletImg"></center>
+            <a href="#addExpensesPop" id="addBudgetBtn" data-rel="popup" data-role="button" data-position-to="window" data-icon="plus" data-transition="pop" data-iconpos="right">legg til dine utgifter</a>
 
-        <div id="myProgress">
-          <div id="myBar3"></div>
-        </div>
-<div class = "rewardContainer">
-            <img src="img/bicycle.png" alt="lock" class="rewardsImg"></img>
-                 <img src="img/school-bus.png" alt="lock" class="rewardsImg"></img>
-             <img src="img/tractor.png" alt="lock" class="rewardsImg"></img>
-        
-        <img src="img/aeroplane.png" alt="lock" class="rewardsImg"></img> 
-    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-    </div>
-<div class="textcontainer">
-  <span class="rewardtext" id="transport">Kaptein</span>
-            <span class="xp">800/1200</span>
-        </div>       
-        <div id="myProgress">
-          <div id="myBar4"></div>
-        </div>
+            <div data-role="popup" id="addExpensesPop" data-position-to="window" class="ui-content">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
+                <h1>Fyll inn</h1>
+                <input type="text" name="Navn på budsjett" id="budgetName" placeholder="Navn på budsjett" />
+                <input type="number" name="Inntekter" id="income" placeholder="Inntekter i Kr" />
+                <input type="number" name="Faste utgifter" id="outcome" placeholder="Faste utgifter i Kr" />
+                <input type="number" name="Mat og drikke" id="budgetFood" placeholder="Mat og drikke i Kr" />
+                <input type="number" name="Transport" id="budgetTrans" placeholder="Transportutgifter i Kr" />
+                <input type="number" name="Underholdning" id="budgetEntertainment" placeholder="Underholdning i Kr" />
+                <input type="number" name="Sparing" id="budgetSavings" placeholder="Sparing i Kr" />
+                <input type="number" name="Andre utgifter" id="budgetOther" placeholder="Andre utgifter i Kr" />
+                <button onClick="addExpense()">Legg til utgifter</button>
+            </div>
+            <center>
+                <p>Utgifter i 'Desember 2016'</p>
+            </center>
+            <ul data-role="listview" data-inset="true" id="mainList"></ul>
 
-        </div>
-        <!-- /content -->
+            <ul id="liste" data-role="listview" data-inset="true">
+                <li id="listeText">
+                    <center>
+                        <p>9.500<span class="kr"> KR </span>/ 10.000<span class="kr"> KR</span></p>
+                    </center>
+                </li>
+                <li id="listeText">
+                    <center>
+                        <p>10.500<span class="kr"> KR </span>/ 12.000<span class="kr"> KR</span></p>
+                    </center>
+                </li>
+                <li id="listeText">
+                    <center>
+                        <p>9.500<span class="kr"> KR </span>/ 10.000<span class="kr"> KR</span></p>
+                    </center>
+                </li>
+            </ul>
+            <center>
+                <a id="addBtnPlus" data-role="button" data-rel="popup" href="#addExpensesPop" data-icon="custom" data-transition="pop"></a>
+            </center>
         </div>
         <!-- /content -->
 
         <!-- footer -->
-        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed" data-tap-toggle="false">
+            <div data-role="navbar" class="foo" data-grid="c">
+                <ul>
+                    <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
+
+                    <li><a href="#budget" id="budgetFoo" data-icon="custom" data-transition="none">Budsjett</a></li>
+
+                    <li><a href="#wallet" id="walletFoo" data-icon="custom" data-transition="none" class="ui-btn-active ui-state-persist">Lommebok</a></li>
+
+                    <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /footer -->
+    </div>
+    <!-- /wallet -->
+
+    <!-- Start of Reward page -->
+    <div data-role="page" id="reward">
+        <div data-role="header" class="header" data-position="fixed">
+            <h1>Belønninger</h1>
+            <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-panelicon ui-btn-icon-notext ui-shadow ui-corner-all" id="panelBtn"></a>
+        </div>
+        <!-- /header -->
+
+        <div role="main" class="ui-content">
+
+        </div>
+        <!-- /content -->
+
+        <!-- footer -->
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed" data-tap-toggle="false">
             <div data-role="navbar" class="foo" data-grid="c">
                 <ul>
                     <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
@@ -260,7 +276,7 @@
         <!-- /footer -->
     </div>
     <!-- /reward -->
-    <!-- budgetPage -->
+    <!-- Start of budgetPage page -->
     <div data-role="page" id="budgetPage">
         <div data-role="header" id="budgetPageHeader" class="header" data-position="fixed">
             <!--<a href="#outside" class="ui-btn-left ui-link ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all"></a>-->
@@ -270,11 +286,18 @@
 
         <div role="main" class="ui-content" id="budgetPageContent">
 
+            <center>
+                <form>
+                    <a href="#budget" data-role="button" onClick="useBudget()" class="budgetBtn" id="budgetBtn1" data-transition="slide" data-inline="true">BRUK</a>
+                    <a href="#budget" data-role="button" onClick="changeBudget()" class="budgetBtn" data-transition="slide" data-inline="true">ENDRE</a>
+                    <a href="#budget" data-role="button" onClick="deleteBudget()" class="budgetBtn" data-transition="slide" data-inline="true">SLETT</a>
+                </form>
+            </center>
         </div>
         <!-- /content -->
 
         <!-- footer -->
-        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+        <!-- <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
             <div data-role="navbar" class="foo" data-grid="c">
                 <ul>
                     <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
@@ -286,7 +309,7 @@
                     <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
                 </ul>
             </div>
-        </div>
+        </div>-->
 
         <!-- /footer -->
     </div>
@@ -295,17 +318,51 @@
     <div data-role="page" id="budgetPageOkt">
         <div data-role="header" id="budgetPageHeader" class="header" data-position="fixed">
             <!--<a href="#outside" class="ui-btn-left ui-link ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all"></a>-->
+            <h1>Oktober 2016</h1>
             <a href="#" data-rel="back" class="ui-btn-left ui-link ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all"></a>
         </div>
         <!-- /header -->
 
         <div role="main" class="ui-content" id="budgetPageContent">
+            <center>
+                <p>Inntekter</p>
+            </center>
+            <br>
+            <ul data-role="listview" class="budgetPageList">
 
+                <li>Inntekter: <span>10.000kr</span></li>
+
+            </ul>
+            <br>
+            <center>
+                <p>Utgifter</p>
+            </center>
+            <br>
+            <ul data-role="listview" class="budgetPageList">
+
+                <li>Faste utgifter: <span>5500kr</span></li>
+
+                <li>Mat og drikke: <span>2000kr</span></li>
+
+                <li>Underholdning: <span>500kr</span></li>
+
+                <li>Sparing: <span>500kr</span></li>
+
+                <li>Andre utgifter: <span>1000kr</span></li>
+            </ul>
+            <br>
+            <center>
+                <form>
+                    <a href="#budget" data-role="button" onClick="useBudget()" class="budgetBtn" id="budgetBtn1" data-transition="slide" data-inline="true">BRUK</a>
+                    <a href="#budget" data-role="button" onClick="changeBudget()" class="budgetBtn" data-transition="slide" data-inline="true">ENDRE</a>
+                    <a href="#budget" data-role="button" onClick="deleteBudget()" class="budgetBtn" data-transition="slide" data-inline="true">SLETT</a>
+                </form>
+            </center>
         </div>
         <!-- /content -->
 
         <!-- footer -->
-        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+        <!--<div data-role="footer" class="foo" data-theme="a" data-position="fixed">
             <div data-role="navbar" class="foo" data-grid="c">
                 <ul>
                     <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
@@ -317,7 +374,7 @@
                     <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
                 </ul>
             </div>
-        </div>
+        </div>-->
 
         <!-- /footer -->
     </div>
@@ -326,17 +383,51 @@
     <div data-role="page" id="budgetPageNov">
         <div data-role="header" id="budgetPageHeader" class="header" data-position="fixed">
             <!--<a href="#outside" class="ui-btn-left ui-link ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all"></a>-->
+            <h1>November 2016</h1>
             <a href="#" data-rel="back" class="ui-btn-left ui-link ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all"></a>
         </div>
         <!-- /header -->
 
         <div role="main" class="ui-content" id="budgetPageContent">
+            <center>
+                <p>Inntekter</p>
+            </center>
+            <br>
+            <ul data-role="listview" class="budgetPageList">
 
+                <li>Inntekter: <span>12.000kr</span></li>
+
+            </ul>
+            <br>
+            <center>
+                <p>Utgifter</p>
+            </center>
+            <br>
+            <ul data-role="listview" class="budgetPageList">
+
+                <li>Faste utgifter: <span>5500kr</span></li>
+
+                <li>Mat og drikke: <span>2000kr</span></li>
+
+                <li>Underholdning: <span>1000kr</span></li>
+
+                <li>Sparing: <span>1000kr</span></li>
+
+                <li>Andre utgifter: <span>1000kr</span></li>
+            </ul>
+            <br>
+            <center>
+                <form>
+                    <a href="#budget" data-role="button" onClick="useBudget()" class="budgetBtn" id="budgetBtn1" data-transition="slide" data-inline="true">BRUK</a>
+                    <a href="#budget" data-role="button" onClick="changeBudget()" class="budgetBtn" data-transition="slide" data-inline="true">ENDRE</a>
+                    <a href="#budget" data-role="button" onClick="deleteBudget()" class="budgetBtn" data-transition="slide" data-inline="true">SLETT</a>
+                </form>
+            </center>
         </div>
         <!-- /content -->
 
         <!-- footer -->
-        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+        <!--<div data-role="footer" class="foo" data-theme="a" data-position="fixed">
             <div data-role="navbar" class="foo" data-grid="c">
                 <ul>
                     <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
@@ -348,7 +439,7 @@
                     <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
                 </ul>
             </div>
-        </div>
+        </div>-->
 
         <!-- /footer -->
     </div>
@@ -357,43 +448,51 @@
     <div data-role="page" id="budgetPageDes">
         <div data-role="header" id="budgetPageHeader" class="header" data-position="fixed">
             <!--<a href="#outside" class="ui-btn-left ui-link ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all"></a>-->
-            <h1> Desember 2016</h1>
+            <h1>Desember 2016</h1>
             <a href="#" data-rel="back" class="ui-btn-left ui-link ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all"></a>
         </div>
         <!-- /header -->
 
         <div role="main" class="ui-content" id="budgetPageContent">
-            <center><p>Inntekter</p></center>
+            <center>
+                <p>Inntekter</p>
+            </center>
             <br>
             <ul data-role="listview" class="budgetPageList">
-            
+
                 <li>Inntekter: <span>10.000kr</span></li>
-    
+
             </ul>
             <br>
-            <center><p>Utgifter</p></center>
+            <center>
+                <p>Utgifter</p>
+            </center>
             <br>
             <ul data-role="listview" class="budgetPageList">
-            
+
                 <li>Faste utgifter: <span>5500kr</span></li>
-            
+
                 <li>Mat og drikke: <span>2000kr</span></li>
-            
+
                 <li>Underholdning: <span>500kr</span></li>
-            
+
                 <li>Sparing: <span>500kr</span></li>
-                
+
                 <li>Andre utgifter: <span>1000kr</span></li>
             </ul>
             <br>
-            <a href="#budget" data-role="button" onClick="useBudget()" class="budgetBtn" id="budgetBtn1" data-transition="slide">BRUK</a>
-            <a href="#budget" data-role="button" onClick="changeBudget()" class="budgetBtn" data-transition="slide">ENDRE</a>
-            <a href="#budget" data-role="button" onClick="deleteBudget()" class="budgetBtn" data-transition="slide">SLETT</a>
+            <center>
+                <form>
+                    <a href="#budget" data-role="button" onClick="useBudget()" class="budgetBtn" id="budgetBtn1" data-inline="true" data-transition="slide">BRUK</a>
+                    <a href="#budget" data-role="button" onClick="changeBudget()" class="budgetBtn" data-inline="true" data-transition="slide">ENDRE</a>
+                    <a href="#budget" data-role="button" onClick="deleteBudget()" class="budgetBtn" data-inline="true" data-transition="slide">SLETT</a>
+                </form>
+            </center>
         </div>
         <!-- /content -->
 
         <!-- footer -->
-        <div data-role="footer" class="foo" data-theme="a" data-position="fixed">
+        <!--<div data-role="footer" class="foo" data-theme="a" data-position="fixed">
             <div data-role="navbar" class="foo" data-grid="c">
                 <ul>
                     <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
@@ -405,7 +504,7 @@
                     <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
                 </ul>
             </div>
-        </div>
+        </div>-->
 
         <!-- /footer -->
     </div>
@@ -427,15 +526,13 @@
                     test2
                 </li>
                 <li class="ui-li-static ui-body-inherit">
-                    test3
+                    <a href="login.html" data-role="button" class="panelBtns" rel="external">Logg ut</a>
                 </li>
             </ul>
         </div>
     </div>
     <!-- /sidePanel -->
 
-    <script src="js/assets/js/jquery-1.9.1.min.js"></script> 
-    <script src="js/owl.carousel.js"></script>
     <script>
         function addBudget() {
             console.log("added content")
@@ -443,43 +540,53 @@
             var income = $("#income").val();
             var outcome = $("#outcome").val();
             var food = $("#budgetFood").val();
+            var trans = $("#budgetTrans").val();
             var entertainment = $("#budgetEntertainment").val();
             var savings = $("#budgetSavings").val();
             var other = $("#budgetOther").val();
-            console.log("Navn: " + name + ", Inntekter: " + income + ", Faste Utgifter: " + outcome +
-                ", Mat og drikke: " + food + ", Underholdning: " + entertainment +
-                ", Sparing: " + savings + ", Andre utgifter: " + other);
-            $("#liste").append("<li><a id='budgetLinks' href='#budgetPage' data-role='button' data-icon='carat-r' data-iconpos='right'>" + name + "</a></li>");
-            $("#liste").listview("refresh");
-            $("#budgetPageHeader").append("<h1>" + name + "</h1>");
-            $("#budgetPageContent").append("<p>test<p>");
-            $("#addBudgetPop").popup("close");
-
             localStorage.bugdetName = name;
             localStorage.income = income;
             localStorage.outcome = outcome;
             localStorage.food = food;
+            localStorage.trans = trans;
             localStorage.entertainment = entertainment;
             localStorage.savings = savings;
             localStorage.other = other;
+            console.log("Navn: " + name + ", Inntekter: " + income + ", Faste Utgifter: " + outcome +
+                ", Mat og drikke: " + food + ", Transport: " + trans + ", Underholdning: " + entertainment +
+                ", Sparing: " + savings + ", Andre utgifter: " + other);
+            $("#liste").append("<li id='listeText'><center><p>0<span class='kr'> KR </span>/ " + localStorage.income + "<span class='kr'> KR</span></p></center></li><li><a id='budgetLinks' href='#budgetPage' data-role='button' data-icon='carat-r' data-iconpos='right' data-transition='slide'>" + name + "</a></li>");
+            $("#liste").listview("refresh");
+            $("#budgetPageHeader").append("<h1>" + name + "</h1>");
+            $("#budgetPageContent").prepend("<center><p>Inntekter</p></center><br><ul data-role='listview' class ='budgetPageList'><li>Inntekter: <span> " + localStorage.income + "kr </span></li></ul><br><center><p> Utgifter </p></center><br><ul data-role ='listview' class ='budgetPageList'><li> Faste utgifter: <span>" + localStorage.outcome +
+                "kr </span></li><li> Mat og drikke: <span>" + localStorage.food + " kr </span></li><li> Underholdning: <span>" + localStorage.entertainment + " kr </span></li><li> Transport: <span>" + localStorage.trans + " kr </span></li><li> Sparing: <span>" + localStorage.savings + " kr </span></li><li> Andre utgifter: <span>" + localStorage.other + " kr </span></li></ul><br>");
+            $("#addBudgetPop").popup("close");
+        }
+        function addExpense() {
+            
+        }
+        function logout() {}
+    </script>
+    <script>
+        // Function called when page has loaded
+        function init() {
+            document.addEventListener("deviceready", onDeviceReady, false);
         }
 
-        function logout() {}
-        
-        function jump(){}
-    
-            $(document).ready(function() {
-      $("#owl-demo").owlCarousel({
-        items : 3,
-        itemsMobile : [667,1],
-        pagination : false
+        // Function called when phonegap is ready
+        function onDeviceReady() {
+            //All pages at least 100% of viewport height
+            var viewPortHeight = $(window).height();
+            var headerHeight = $('div[data-role="header"]').height();
+            var footerHeight = $('div[data-role="footer"]').height();
+            var contentHeight = viewPortHeight - headerHeight - footerHeight;
 
-      });
-
-    });
-    
-</script>
-
+            // Set all pages with class="page-content" to be at least contentHeight
+            $('div[class="page-content"]').css({
+                'min-height': contentHeight + 'px'
+            });
+        }
+    </script>
 </body>
 
 </html>

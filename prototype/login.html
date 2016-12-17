@@ -22,7 +22,7 @@
             <input type="password" name="password" id="password" value="" placeholder="Passord" data-wrapper-class="ui-custom" />
             <a href="#forgot" id="forgotLink">Glemt passord?</a>
             <br>
-            <a href="#" data-role="button" onClick="login()" id="loginBtn" >LOGG INN</a>
+            <a href="main.html#economy" data-role="button" onClick="login()" id="loginBtn" rel="external" data-transition="pop">LOGG INN</a>
             <hr>
             <!--<a href="#"><img alt="facebookLogin" src="img/Facebook-kopi%202.png" id="facebookLogin"></a>-->
         </div>
@@ -34,109 +34,37 @@
     <!-- Glemt passord -->
     <div data-role="page" id="forgot">
 
-            <div data-role="header">
-                <h1>Glemt passord</h1>
-                <a data-rel="back">
-                    < </a>
-            </div>
-            <!-- /header -->
-
-            <div role="main" class="password" id="forgotContent">
-                <center>
-                    <p id="createUser" href="#create">Fyll inn din epost og få tilsendt nytt passord</p>
-                </center>
-                <hr>
-                <input type="text" name="username" id="usernamePassword" placeholder="Epost" data-wrapper-class="ui-custom" />
-                <a href="#" data-role="button" onClick="forgot()" id="loginBtn">Send passord</a>
-                <hr>
-            </div>
-        </div>
-        <!-- /content -->
-            
-            <!-- Start of register page -->
-    <div data-role="page" id="create">
         <div data-role="header">
-            <h1>Registrer deg</h1>
-              <a data-rel="back">
-                    < </a>
+            <h1>Glemt passord</h1>
+            <a data-rel="back">
+                < </a>
         </div>
         <!-- /header -->
 
-        <div role="main" class="ui-content">
-            
-            <input type="text" id="brukernavn" name="username"  class="registerfields" placeholder="Epost" data-wrapper-class="ui-custom" required/>
-            
-            <input type="text" id="fornavn" name="fornavn" class="registerfields" placeholder="Fornavn" data-wrapper-class="ui-custom" />
-            
-            <input type="text" id="etternavn" name="etternavn" class="registerfields" placeholder="Etternavn" data-wrapper-class="ui-custom" />
-            
-            <input type="password" id="passord" name="passord" class="registerfields" placeholder="Passord" data-wrapper-class="ui-custom" />
-            
-            <input type="password" id="gjentaPassord" name="gjentaPassord" class="registerfields" placeholder="Gjenta passord" data-wrapper-class="ui-custom" />
-            
-             <a href="#login" data-role="button" onClick="registerUser()" id="registerButton" data-transition="pop">Registrer</a>
-            
-        
+        <div role="main" class="password" id="forgotContent">
+            <center>
+                <p id="createUser" href="#create">Fyll inn din epost og få tilsendt nytt passord</p>
+            </center>
+            <hr>
+            <input type="text" name="username" id="usernamePassword" placeholder="Epost" data-wrapper-class="ui-custom" />
+            <a href="#login" data-role="button" onClick="forgot()" id="loginBtn" data-transition="pop">Send passord</a>
+            <hr>
         </div>
-     </div>
         <!-- /content -->
 
+        <!-- /content -->
     </div>
     <!-- / end glemt passord -->
         <script>
             function login() {
             var username = $("#username").val();
-                var password = $("#password").val();
+            var password = $("#password").val();
 
-                var storedName = localStorage.getItem('username');
-                var storedPw = localStorage.getItem('passord');
-                
-                if(username == storedName && password == storedPw) {
-                    window.location = "main.html#economy";
-                }else {
-                    alert('ERROR.');
-                }
+            console.log("username: " + username + ", password: " + password);
+
+            localStorage.username = username;
+            localStorage.password = password;
         }
-            function registerUser(){
-                
-                localStorage.clear();
-               
-                var username = $("#brukernavn").val();
-                var fornavn = $("#fornavn").val();
-                var etternavn = $("#etternavn").val();
-                var password = $("#passord").val();
-                var gjentaPassord = $("#gjentaPassord").val();
-                
-            
-                localStorage.setItem("username", username); 
-                localStorage.setItem("firstname", fornavn); 
-                localStorage.setItem("lastname", etternavn); 
-                localStorage.setItem("passord", password);
-                
-            }
-            
-            function verifyPassword(){
-                    
-                  var pass = $('input[name=passord]').val();
-                  var repass = $('input[name=gjentaPassord]').val();
-                    
-             if (pass != repass) {
-                $('#passord').addClass('has-error');
-                $('#gjentaPassord').addClass('has-error');
-            }
-            else {
-                $('#passord').removeClass(' has-error ');
-                $('#gjentaPassord').removeClass(' has-error ');
-            }
-            }
-            
-            $(document).ready(function(){
-               $("#gjentaPassord").keyup(verifyPassword); 
-            });
-            
-            function forgot(){
-             window.location = "main.html#economy";
-            }
         </script>
 </body>
 </html>
