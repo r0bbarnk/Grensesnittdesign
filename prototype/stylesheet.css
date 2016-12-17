@@ -185,17 +185,25 @@
     padding: 0;
 }
 
-.maal {
-    text-align: center;
-    font-size: 1em;
-    background-color: #007272;
-    color: aliceblue;
-    font-style: normal;
-    text-decoration: none;
-    font-weight: 100;
-    padding: 4px;
-    padding-left: 5px;
-    margin-top: -15px;
+
+.registerfields{
+    background-color: #007272!important;
+    color: white!important;
+    font-weight: lighter!important;
+    letter-spacing: 0.1em!important;
+    text-shadow: none!important;
+    float: left!important;
+    margin-bottom: 0.1em!important;
+    background-size: 1.5em!important;
+    margin-bottom: 15px!important;
+}
+
+.has-error{
+    background-color: firebrick!important;
+}
+
+.has-success{
+    background-color: greenyellow!important;
 }
 
 #chartContainer {
@@ -229,6 +237,30 @@
     font-weight: 100;
     margin: 0;
     margin-top: 5%;
+}
+
+#listeExpenses {
+    background-color: transparent;
+}
+
+#listeExpenses li {
+    /*margin-bottom: 0.5em;*/
+    /*border: 0.5px white solid;*/
+    padding: 10px 5px;
+    box-shadow: none;
+    background-color: #007272;
+    /* IE9, iOS 3.2+ */
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj48c3RvcCBzdG9wLWNvbG9yPSIjMDA3MjcyIiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMC4yNSIvPjxzdG9wIHN0b3AtY29sb3I9IiMwMDY4NjUiIHN0b3Atb3BhY2l0eT0iMSIgb2Zmc2V0PSIwLjc1Ii8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.25, rgb(0, 114, 114)), color-stop(0.75, rgb(0, 104, 101)));
+    /* Android 2.3 */
+    background-image: -webkit-linear-gradient(top, rgb(0, 114, 114) 25%, rgb(0, 104, 101) 75%);
+    /* IE10+ */
+    background-image: linear-gradient(to bottom, rgb(0, 114, 114) 25%, rgb(0, 104, 101) 75%);
+    background-image: -ms-linear-gradient(top, rgb(0, 114, 114) 25%, rgb(0, 104, 101) 75%);
+}
+
+#listeExpenses li p {
+    font-weight: lighter;
 }
 #walletImg {
     position: relative;
@@ -562,6 +594,103 @@
     background: url("img/green/wallet.png") 50% 50% no-repeat;
     background-size: 24px 24px;
 }
+
+
+
+.rewardsImg{
+    width: 40px;
+    padding: 5px;
+}
+
+.rewardContainer{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+#myProgress {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background-color: lightgray;
+}
+
+#myBar {
+    position: absolute;
+    width: 40%;
+    border: 2px solid white;
+    border-left: none;
+    height: 60%;
+    background-color: #007272;
+    margin-top: 2px;
+}
+
+#myBar2 {
+    position: absolute;
+    width: 26%;
+    border: 2px solid white;
+    border-left: none;
+    height: 60%;
+    background-color: #007272;
+    margin-top: 2px;
+}
+#myBar4 {
+    position: absolute;
+    width: 80%;
+    border: 2px solid white;
+    border-left: none;
+    height: 60%;
+    background-color: #007272;
+    margin-top: 2px;
+}
+
+#myBar3 {
+    position: absolute;
+    width: 50%;
+    border: 2px solid white;
+    border-left: none;
+    height: 60%;
+    background-color: #007272;
+    margin-top: 2px;
+}
+
+.textcontainer{
+    text-align: center;
+}
+
+.textcontainer .rewardtext{
+    margin: 2px;
+    font-size: 20px;
+    margin-left: 0px;
+    font-weight: 700;
+}
+
+.textcontainer .xp{
+    margin: 2px;
+    font-size: 19px;
+}
+
+.economyitem p{
+    margin: 0px;   
+}
+
+.frontView ul, li{
+    list-style: none;
+    padding-left: 0px!important;
+
+}
+
+#owl-demo{
+    text-align: center;
+    color: white;
+    font-weight: lighter!important;
+    letter-spacing: 0.1em!important;
+    text-shadow: none!important;
+    border-radius: 1em!important;
+    margin-bottom: 10px;
+}
+
+
 
 
 /*end footer*/

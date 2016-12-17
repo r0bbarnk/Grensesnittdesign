@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href="js/owl.carousel.css" rel="stylesheet">
+    <link href="js/owl.theme.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -80,12 +82,36 @@
                 <center><img src="img/hand-holding-up-a-sack-of-money.png" alt="budgets" id="ecoImg"></center>
             </center>
 
-            <center>
-                <h3>Sparemål</h3>
-            </center>
-            <p class="maal">Macbook - 1200/2000,-</p>
-            <p class="maal">Bil - 3000/12000,-</p>
-            <p class="maal">Ferie - 3000/8000,</p>
+             <div id="owl-demo" class="owl-carousel">
+                      <div class="frontView">
+                          <div class="economyitem">
+                          
+                          <p>Desember</p>
+                          <ul>
+            
+                            <li>Faste utgifter: <span>5500kr</span></li>
+            
+                            <li>Mat og drikke: <span>2000kr</span></li>
+            
+                            <li>Underholdning: <span>500kr</span></li>
+            
+                            <li>Sparing: <span>500kr</span></li>
+                
+                            <li>Andre utgifter: <span>1000kr</span></li>
+                          </ul>
+                      </div>
+                          </div>
+                    <div class="frontView">
+                      <div class="economyitem">
+                          <p>November</p>
+                      </div>
+                    </div>
+                    <div class="frontView">
+                      <div class="economyitem">
+                          <p>Oktober</p>
+                      </div>
+                        </div>
+                </div>
 
         </div>
         <!-- /content -->
@@ -217,26 +243,23 @@
             <center>
                 <p>Utgifter i 'Desember 2016'</p>
             </center>
-            <ul data-role="listview" data-inset="true" id="mainList"></ul>
+            <<ul data-role="listview" data-inset="true" id="mainList"></ul>
 
-            <ul id="liste" data-role="listview" data-inset="true">
+            <ul id="listeExpenses" data-role="listview" data-inset="true">
                 <li id="listeText">
-                    <p>Kiwi-Mat og drikke-Handlevarer:<span class="walletLog">568 KR</span></p>
+                    <p>Mat og drikke-Kiwi-Handlevarer:<span class="walletLog">568 KR</span></p>
                 </li>
                 <li id="listeText">
-                    <p>Colusseum-Underholdning-2 kinobilletter:<span class="walletLog">240 KR</span></p>
+                    <p>Underholdning-Colusseum-2 kinobilletter:<span class="walletLog">240 KR</span></p>
                 </li>
                 <li id="listeText">
-                    <p>Balkan-Mat og drikke-Kebab og brus:<span class="walletLog">140 KR</span></p>
+                    <p>Mat og drikke-Balkan-Kebab og brus:<span class="walletLog">140 KR</span></p>
                 </li>
                 <li id="listeText">
-                    <p>Apple.no-Annet-Macbook pro:<span class="walletLog">15000 KR</span></p>
+                    <p>Annet-Apple.no-Macbook pro:<span class="walletLog">15000 KR</span></p>
                 </li>
                 <li id="listeText">
-                    <p>Annet-420:<span class="walletLog">500 KR</span></p>
-                </li>
-                <li id="listeText">
-                    <p>4Sound-Annet-Gitar:<span class="walletLog">1400 KR</span></p>
+                    <p>Annet-4Sound-Gitar:<span class="walletLog">1400 KR</span></p>
                 </li>
             </ul>
             <center>
@@ -269,11 +292,71 @@
             <h1>Belønninger</h1>
             <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-panelicon ui-btn-icon-notext ui-shadow ui-corner-all" id="panelBtn"></a>
         </div>
-        <!-- /header -->
-
+        <!-- /header -->                
         <div role="main" class="ui-content">
+            <div class = "rewardContainer">
+                <a href="#" onclick="jump()"><img src="img/coin-1.png" alt="silver coin" class="rewardsImg"></img></a>
+            <img src="img/coin.png" alt="Golden Coin" class="rewardsImg"></img>
+            <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+            <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
+            <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+        </div>
+        <div class="textcontainer">
+            <span class="rewardtext" id="save">Flink</span>
+            <span class="xp">350/1000</span>
+        </div>   
+        <div id="myProgress">
+          <div id="myBar"></div>
+        </div>
+        <div class = "rewardContainer">
+            <img src="img/celebration.png" alt="lock" class="rewardsImg"></img>
+                 <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+             <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+        
+        <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
+    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+    </div>
+<div class="textcontainer">
+            <span class="rewardtext" id="party">Champis</span>
+            <span class="xp">200/500</span>
+        </div>
+        <div id="myProgress">
+          <div id="myBar2"></div>
+        </div>
+<div class = "rewardContainer">
+            <img src="img/carrot.png" alt="lock" class="rewardsImg"></img>
+                 <img src="img/apple.png" alt="lock" class="rewardsImg"></img>
+             <img src="img/broccoli.png" alt="lock" class="rewardsImg"></img>
+        
+        <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
+    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+    </div>
+<div class="textcontainer">
+            <span class="rewardtext" id="food">Firt price</span>
+            <span class="xp">400/1000</span>
+        </div>        
+
+        <div id="myProgress">
+          <div id="myBar3"></div>
+        </div>
+<div class = "rewardContainer">
+            <img src="img/bicycle.png" alt="lock" class="rewardsImg"></img>
+                 <img src="img/school-bus.png" alt="lock" class="rewardsImg"></img>
+             <img src="img/tractor.png" alt="lock" class="rewardsImg"></img>
+        
+        <img src="img/aeroplane.png" alt="lock" class="rewardsImg"></img> 
+    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+    </div>
+<div class="textcontainer">
+  <span class="rewardtext" id="transport">Kaptein</span>
+            <span class="xp">800/1200</span>
+        </div>       
+        <div id="myProgress">
+          <div id="myBar4"></div>
+        </div>
 
         </div>
+    
         <!-- /content -->
 
         <!-- footer -->
@@ -549,7 +632,9 @@
         </div>
     </div>
     <!-- /sidePanel -->
-
+    
+    <script src="js/assets/js/jquery-1.9.1.min.js"></script> 
+    <script src="js/owl.carousel.js"></script>
     <script>
         function addBudget() {
             console.log("added content")
@@ -605,6 +690,16 @@
                 'min-height': contentHeight + 'px'
             });
         }
+        
+        $(document).ready(function() {
+            $("#owl-demo").owlCarousel({
+                items : 3,
+                itemsMobile : [667,1],
+                pagination : false
+
+            });
+
+        });
     </script>
 </body>
 
