@@ -671,17 +671,25 @@
 }
 
 .economyitem p{
-    margin: 0px;   
+    margin: 0px;
 }
 
-.frontView ul, li{
+.economyitem p:first-child{
+    text-align: center;
+}
+
+.frontView ul{
     list-style: none;
     padding-left: 0px!important;
 
 }
 
+.frontView li{
+    padding: 10px;
+    
+}
+
 #owl-demo{
-    text-align: center;
     color: white;
     font-weight: lighter!important;
     letter-spacing: 0.1em!important;
