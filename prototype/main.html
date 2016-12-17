@@ -22,12 +22,12 @@
                 $(".ui-panel-wrapper").css("height", height - 100);
             });
         });
-        
-        $( function() {
-    $( "#progressbar" ).progressbar({
-      value: 50
-    });
-  } );
+
+        $(function () {
+            $("#progressbar").progressbar({
+                value: 50
+            });
+        });
     </script>
     <script type="text/javascript">
         google.charts.load("current", {
@@ -204,13 +204,13 @@
                 <input type="text" name="Navn på utgift" id="item" placeholder="Hva kjøpte du?" />
                 <input type="number" name="Pris" id="price" placeholder="Pris i Kr" />
                 <label for="select-choice-1" class="select">Velg en kategori</label>
-<select name="select-choice-1" id="select-choice-1">
-    <option value="food">Mat og drikke</option>
-    <option value="trans">Transport</option>
-    <option value="entertainment">Underholdning</option>
-    <option value="saving">Sparing</option>
-    <option value="other">Annet</option>
-</select>
+                <select name="select-choice-1" id="select-choice-1" data-role="none">
+                    <option value="food">Mat og drikke</option>
+                    <option value="trans">Transport</option>
+                    <option value="entertainment">Underholdning</option>
+                    <option value="saving">Sparing</option>
+                    <option value="other">Annet</option>
+                </select>
                 <input type="text" name="Butikk" id="shop" placeholder="Hvor kjøpte du det?" />
                 <button onClick="addExpense()">Legg til kjøp</button>
             </div>
@@ -221,10 +221,10 @@
 
             <ul id="liste" data-role="listview" data-inset="true">
                 <li id="listeText">
-                        <p>Kiwi-Mat og drikke-Handlevarer:<span class="walletLog">568 KR</span></p>
+                    <p>Kiwi-Mat og drikke-Handlevarer:<span class="walletLog">568 KR</span></p>
                 </li>
                 <li id="listeText">
-                        <p>Colusseum-Underholdning-2 kinobilletter:<span class="walletLog">240 KR</span></p>
+                    <p>Colusseum-Underholdning-2 kinobilletter:<span class="walletLog">240 KR</span></p>
                 </li>
                 <li id="listeText">
                     <p>Balkan-Mat og drikke-Kebab og brus:<span class="walletLog">140 KR</span></p>
@@ -579,9 +579,11 @@
                 "kr </span></li><li> Mat og drikke: <span>" + localStorage.food + " kr </span></li><li> Underholdning: <span>" + localStorage.entertainment + " kr </span></li><li> Transport: <span>" + localStorage.trans + " kr </span></li><li> Sparing: <span>" + localStorage.savings + " kr </span></li><li> Andre utgifter: <span>" + localStorage.other + " kr </span></li></ul><br>");
             $("#addBudgetPop").popup("close");
         }
+
         function addExpense() {
-            
+
         }
+
         function logout() {}
     </script>
     <script>
