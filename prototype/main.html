@@ -665,8 +665,10 @@
         </div>
         <!-- /header -->
 
-        <div role="main" class="ui-content" id="budgetMain">
-           <p id="name"></p>
+        <div role="main" class="ui-content profile" id="budgetMain">
+            <br>
+            <img src="img/diamond.png" alt="Diamant">
+           <p>Hei <span id="name"></span></p>
         </div>
         <!-- /content -->
 
@@ -754,7 +756,9 @@
                 pagination : false
 
             });
-
+            
+            $("#name").text(localStorage.firstname + " " + localStorage.lastname);
+            
         });
     </script>
 </body>
