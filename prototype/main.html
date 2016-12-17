@@ -257,11 +257,11 @@
                 <input type="number" name="Pris" id="price" placeholder="Pris i Kr" />
                 <label for="select-choice-1" class="select">Velg en kategori</label>
                 <select name="select-choice-1" id="select-choice-1" data-role="none">
-                    <option value="food">Mat og drikke</option>
-                    <option value="trans">Transport</option>
-                    <option value="entertainment">Underholdning</option>
-                    <option value="saving">Sparing</option>
-                    <option value="other">Annet</option>
+                    <option value="Mat og drikke">Mat og drikke</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Underholdning">Underholdning</option>
+                    <option value="Sparing">Sparing</option>
+                    <option value="Annet">Annet</option>
                 </select>
                 <input type="text" name="Butikk" id="shop" placeholder="Hvor kjøpte du det?" />
                 <button onClick="addExpense()">Legg til kjøp</button>
@@ -724,7 +724,14 @@
         }
 
         function addExpense() {
-
+            console.log("added expense");
+            var item = $("#item").val();
+            var price = $("#price").val();
+            var category = $("#select-choice-1").val();
+            var location = $("#shop").val();
+            console.log("Item: " + item + " Price: " + price + " Category: " + category + " Location: " + location + " ");
+            $("#listeExpenses").append("<li id='listeText'><p>" + category + "-" + location + "-" + item + ":<span class='walletLog'>" + price + " KR</span></p></li>");
+            $("#addExpensesPop").popup("close");
         }
 
         function logout() {}
