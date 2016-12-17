@@ -649,7 +649,7 @@
                     test1
                 </li>
                 <li class="ui-li-static ui-body-inherit">
-                    test2
+                    <a href="#profile" data-role="button" class="panelBtns" >Profil</a>
                 </li>
                 <li class="ui-li-static ui-body-inherit">
                     <a href="login.html" data-role="button" class="panelBtns" rel="external">Logg ut</a>
@@ -657,6 +657,36 @@
             </ul>
         </div>
     </div>
+<!-- Start of budget page -->
+    <div data-role="page" id="profile">
+        <div data-role="header" class="header" data-position="fixed">
+            <h1>Profil</h1>
+            <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-panelicon ui-btn-icon-notext ui-shadow ui-corner-all" id="panelBtn"></a>
+        </div>
+        <!-- /header -->
+
+        <div role="main" class="ui-content" id="budgetMain">
+           <p id="name"></p>
+        </div>
+        <!-- /content -->
+
+        <!-- footer -->
+        <div data-role="footer" class="foo" data-theme="a" data-position="fixed" data-tap-toggle="false">
+            <div data-role="navbar" class="foo" data-grid="c">
+                <ul>
+                    <li><a href="#economy" id="economyFoo" data-icon="custom" data-transition="none">Min Økonomi</a></li>
+
+                    <li><a href="#budget" id="budgetFoo" data-icon="custom" data-transition="none">Budsjett</a></li>
+
+                    <li><a href="#wallet" id="walletFoo" data-icon="custom" data-transition="none">Lommebok</a></li>
+
+                    <li><a href="#reward" id="rewardFoo" data-icon="custom" data-transition="none">Belønninger</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /footer -->
+    </div>
+    <!-- /budget -->
     <!-- /sidePanel -->
     
     <script src="js/assets/js/jquery-1.9.1.min.js"></script> 
