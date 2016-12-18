@@ -27,7 +27,7 @@
 
         $(function () {
             $("#progressbar").progressbar({
-                value: 50
+                value: 68
             });
         });
         $(function () {
@@ -45,6 +45,36 @@
                 value: 95
             });
         });
+        $(function () {
+            $("#progressbar5").progressbar({
+                value: 91
+            });
+        });
+        $(function () {
+            $("#progressbar6").progressbar({
+                value: 35
+            });
+        });
+        $(function () {
+            $("#progressbar7").progressbar({
+                value: 1
+            });
+        });
+        $(function () {
+            $("#progressbar8").progressbar({
+                value: 50
+            });
+        });
+        $(function () {
+            $("#progressbar9").progressbar({
+                value: 1
+            });
+        });
+        $(function () {
+            $("#progressbar10").progressbar({
+                value: 100
+            });
+        });
     </script>
     <script type="text/javascript">
         google.charts.load("current", {
@@ -55,8 +85,8 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
           ['Utgifter', 'Antall i KR'],
-          ['Faste utgifter', 6000], ['Mat og drikke', 2000], ['Transport', 500],
-          ['Underholdning', 500], ['Sparing', 500], ['Andre utgifter', 1000]
+          ['Faste utgifter', 5500], ['Mat og drikke', 708], ['Transport', 420],
+          ['Underholdning', 240], ['Sparing', 0], ['Andre utgifter', 1400]
         ]);
 
             var options = {
@@ -163,18 +193,40 @@
                 <center><img src="img/hand-holding-up-a-sack-of-money.png" alt="budgets" id="ecoImg"></center>
                 <div id="chartContainer" class="chartContainers"></div>
             </center>
-                        <center><p>Desember 2016</p></center>
                         <ul class="budgetPageList">
-                            <li><center>9.500kr / 10.000kr</center>
+                            <li>
+                                <center><p>Desember 2016</p></center>
+                                <center>8.268kr / 10.000kr</center>
                                 <div id="progressbar2" class="ecoProgress">
                                 </div>
+                                <center> + 1.732kr </center>
+                                <br>
+                                <p>Faste Utgifter: <span>5.500kr / 6.000kr</span></p>
+                                <div id="progressbar5" class="ecoProgress"></div>
                                 <center> + 500kr </center>
-                                <p>Faste Utgifter: <span>6.000kr</span></p>
-                                <p>Mat og Drikke: <span>2.000kr</span></p>
-                                <p>Transport: <span>500kr</span></p>
-                                <p>Underholdning: <span>500kr</span></p>
-                                <p>Sparing: <span>500kr</span></p>
-                            <p>Andre utgifter: <span>1000kr</span></p></li>
+                                <br>
+                                <p>Mat og Drikke: <span>708kr / 2.000kr</span></p>
+                                <div id="progressbar6" class="ecoProgress"></div>
+                                <center> + 1.292kr </center>
+                                <br>
+                                <p>Transport: <span>0kr / 500kr</span></p>
+                                <div id="progressbar7" class="ecoProgress"></div>
+                                <center> + 500kr </center>
+                                <br>
+                                <p>Underholdning: <span>240kr / 500kr</span></p>
+                                <div id="progressbar8" class="ecoProgress"></div>
+                                <center> + 260kr </center>
+                                <br>
+                                <p>Sparing: <span>0kr / 500kr</span></p>
+                                <div id="progressbar9" class="ecoProgress"></div>
+                                <center> + 500kr </center>
+                                <br>
+                                <p>Andre utgifter: <span>1400kr / 1000kr</span></p>
+                                <div id="progressbar10" class="ecoProgress"></div>
+                                <center id="minus"><p> - 400kr </p></center>
+                                <br>
+                                <p>TOTALT: <span>+ 1.732</span></p>
+                                </li>
                         </ul>
                     </div>
                 </div>
@@ -184,9 +236,9 @@
                 <center><img src="img/hand-holding-up-a-sack-of-money.png" alt="budgets" id="ecoImg"></center>
                 <div id="chartContainer2" class="chartContainers"></div>
             </center>
-                        <center><p>November 2016</p></center>
                         <ul class="budgetPageList">
-                            <li><center>10.500kr / 12.000kr</center>
+                            <li><center><p>November 2016</p></center>
+                            <center>10.500kr / 12.000kr</center>
                                 <div id="progressbar3" class="ecoProgress">
                                 </div>
                                 <center> + 1.500kr </center>
@@ -204,9 +256,9 @@
                 <center><img src="img/hand-holding-up-a-sack-of-money.png" alt="budgets" id="ecoImg"></center>
                 <div id="chartContainer3" class="chartContainers"></div>
             </center>
-                        <center><p>Oktober 2016</p></center>
                         <ul class="budgetPageList">
-                            <li><center>9.500kr / 10.000kr</center>
+                            <li><center><p>Oktober 2016</p></center>
+                                <center>9.500kr / 10.000kr</center>
                                 <div id="progressbar4" class="ecoProgress">
                                 </div>
                                 <center> + 500kr </center>
@@ -277,19 +329,19 @@
                         <p>9.500<span class="kr"> KR </span>/ 10.000<span class="kr"> KR</span></p>
                     </center>
                 </li>
-                <li><a id="budgetLinks" href="#budgetPageOkt" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Oktober 2016  <span class="budgetResult">+ 500</span></a></li>
+                <li><a id="budgetLinks" href="#budgetPageOkt" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Oktober 2016  <span class="budgetResult">+ 500kr</span></a></li>
                 <li id="listeText">
                     <center>
                         <p>10.500<span class="kr"> KR </span>/ 12.000<span class="kr"> KR</span></p>
                     </center>
                 </li>
-                <li><a id="budgetLinks" href="#budgetPageNov" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">November 2016 <span class="budgetResult">+ 1500</span></a></li>
+                <li><a id="budgetLinks" href="#budgetPageNov" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">November 2016 <span class="budgetResult">+ 1500kr</span></a></li>
                 <li id="listeText">
                     <center>
-                        <p>9.500<span class="kr"> KR </span>/ 10.000<span class="kr"> KR</span></p>
+                        <p>8.268<span class="kr"> KR </span>/ 10.000<span class="kr"> KR</span></p>
                     </center>
                 </li>
-                <li><a id="budgetLinks" href="#budgetPageDes" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Desember 2016 <span class="budgetResult">+ 500</span></a></li>
+                <li><a id="budgetLinks" href="#budgetPageDes" data-role="button" data-icon="carat-r" data-iconpos="right" data-transition="slide">Desember 2016 <span class="budgetResult">+ 1.732kr</span></a></li>
             </ul>
             <center>
                 <a id="addBtnPlus" data-role="button" data-rel="popup" href="#addBudgetPop" data-icon="custom" data-transition="pop"></a>
@@ -326,7 +378,7 @@
             <br>
             <center><img src="img/wallet.png" alt="wallet" id="walletImg"></center>
             <center>
-                <h1>6.000 <span class="kr">KR</span> / 12.000 <span class="kr">KR</span></h1>
+                <h1>8.268 <span class="kr">KR</span> / 12.000 <span class="kr">KR</span></h1>
             </center>
             <div id="progressbar">
             </div>
@@ -363,7 +415,7 @@
                     <p>Mat og drikke-Balkan-Kebab og brus:<span class="walletLog">140 KR</span></p>
                 </li>
                 <li id="listeText">
-                    <p>Annet-Apple.no-Macbook pro:<span class="walletLog">15000 KR</span></p>
+                    <p>Faste-utgifter:<span class="walletLog">5500 KR</span></p>
                 </li>
                 <li id="listeText">
                     <p>Annet-4Sound-Gitar:<span class="walletLog">1400 KR</span></p>
