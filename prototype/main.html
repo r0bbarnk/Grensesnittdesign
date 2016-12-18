@@ -20,7 +20,7 @@
         $(document).on("pagecreate", function () {
             $("[data-role=panel]").one("panelbeforeopen", function () {
                 var height = $.mobile.pageContainer.pagecontainer("getActivePage").outerHeight();
-                $(".ui-panel-wrapper").css("height", height - 100);
+                $(".ui-panel-wrapper").css("height", height - 120);
             });
         });
 
@@ -711,7 +711,7 @@
             console.log("Navn: " + name + ", Inntekter: " + income + ", Faste Utgifter: " + outcome +
                 ", Mat og drikke: " + food + ", Transport: " + trans + ", Underholdning: " + entertainment +
                 ", Sparing: " + savings + ", Andre utgifter: " + other);
-            $("#liste").append("<li id='listeText'><center><p>0<span class='kr'> KR </span>/ " + localStorage.income + "<span class='kr'> KR</span></p></center></li><li><a id='budgetLinks' href='#budgetPage' data-role='button' data-icon='carat-r' data-iconpos='right' data-transition='slide'>" + name + "</a></li>");
+            $("#liste").append("<li id='listeText'><center><p>0<span class='kr'> KR</span> / " + localStorage.income + "<span class='kr'> KR</span></p></center></li><li><a id='budgetLinks' href='#budgetPage' data-role='button' data-icon='carat-r' data-iconpos='right' data-transition='slide'>" + name + "</a></li>");
             $("#liste").listview("refresh");
             $("#budgetPageHeader").append("<h1>" + name + "</h1>");
             $("#budgetPageContent").prepend("<center><p>Inntekter</p></center><br><ul data-role='listview' class ='budgetPageList'><li>Inntekter: <span> " + localStorage.income + "kr </span></li></ul><br><center><p> Utgifter </p></center><br><ul data-role ='listview' class ='budgetPageList'><li> Faste utgifter: <span>" + localStorage.outcome +

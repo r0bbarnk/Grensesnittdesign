@@ -464,10 +464,13 @@
     letter-spacing: 0.2em!important;
 }
 
+.budgetPageList {
+    border: none!important;
+}
 .budgetPageList li {
     letter-spacing: 0.1em!important;
-    border: 1px;
-    border-color: white;
+    border: none!important;
+    border-color: none!important;
     font-weight: 100 !important;
     /*background-color: #007272 !important;*/
     color: white !important;
