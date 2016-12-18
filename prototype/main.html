@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Student Budsjett</title>
 
@@ -29,6 +30,21 @@
                 value: 50
             });
         });
+        $(function () {
+            $("#progressbar2").progressbar({
+                value: 95
+            });
+        });
+        $(function () {
+            $("#progressbar3").progressbar({
+                value: 85
+            });
+        });
+        $(function () {
+            $("#progressbar4").progressbar({
+                value: 95
+            });
+        });
     </script>
     <script type="text/javascript">
         google.charts.load("current", {
@@ -45,7 +61,7 @@
 
             var options = {
                 legend: 'none',
-                is3d: true,
+                is3d: 'true',
                 pieSliceText: 'label',
                 backgroundColor: 'transparent',
                 chartArea: {
@@ -59,6 +75,70 @@
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('chartContainer'));
+            chart.draw(data, options);
+        }
+    </script>
+    <script type="text/javascript">
+        google.charts.load("current", {
+            packages: ["corechart"]
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+          ['Utgifter', 'Antall i KR'],
+          ['Faste utgifter', 5500], ['Mat og drikke', 2000], ['Transport', 0],
+          ['Underholdning', 1000], ['Sparing', 1000], ['Andre utgifter', 1000]
+        ]);
+
+            var options = {
+                legend: 'none',
+                is3d: 'true',
+                pieSliceText: 'label',
+                backgroundColor: 'transparent',
+                chartArea: {
+                    width: '80%',
+                    height: '80%'
+                },
+                pieHole: 0.5,
+                pieStartAngle: 130,
+                fontSize: 11,
+                colors: ['#013532', '#014441', '#024F4b', '#015B56', '#006865', '#007272'],
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chartContainer2'));
+            chart.draw(data, options);
+        }
+    </script>
+    <script type="text/javascript">
+        google.charts.load("current", {
+            packages: ["corechart"]
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+          ['Utgifter', 'Antall i KR'],
+          ['Faste utgifter', 5500], ['Mat og drikke', 2000], ['Transport', 0],
+          ['Underholdning', 500], ['Sparing', 500], ['Andre utgifter', 1000]
+        ]);
+
+            var options = {
+                legend: 'none',
+                is3d: 'true',
+                pieSliceText: 'label',
+                backgroundColor: 'transparent',
+                chartArea: {
+                    width: '80%',
+                    height: '80%'
+                },
+                pieHole: 0.5,
+                pieStartAngle: 130,
+                fontSize: 11,
+                colors: ['#013532', '#014441', '#024F4b', '#015B56', '#006865', '#007272'],
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chartContainer3'));
             chart.draw(data, options);
         }
     </script>
@@ -76,67 +156,69 @@
         <!-- /header -->
 
         <div role="main" class="ui-content" id="economyContent">
-            <center>
+            <div id="owl-demo" class="owl-carousel">
+                <div class="frontView">
+                    <div class="economyitem">
+                        <center>
                 <center><img src="img/hand-holding-up-a-sack-of-money.png" alt="budgets" id="ecoImg"></center>
-                <div id="chartContainer"></div>
+                <div id="chartContainer" class="chartContainers"></div>
             </center>
-
-             <div id="owl-demo" class="owl-carousel">
-                      <div class="frontView">
-                          <div class="economyitem">
-                          
-                          <p>Desember 2016</p>
-                              
-                          <ul class="budgetPageList">
-
-                <li>Faste utgifter: <span>6000kr</span></li>
-
-                <li>Mat og drikke: <span>2000kr</span></li>
-
-                <li>Underholdning: <span>500kr</span></li>
-
-                <li>Sparing: <span>500kr</span></li>
-
-                <li>Andre utgifter: <span>1000kr</span></li>
-            </ul>
-                      </div>
-                          </div>
-                    <div class="frontView">
-                      <div class="economyitem">
-                          <p>November 2016</p>
-                          <ul class="budgetPageList">
-
-                <li>Faste utgifter: <span>5500kr</span></li>
-
-                <li>Mat og drikke: <span>2000kr</span></li>
-
-                <li>Underholdning: <span>1000kr</span></li>
-
-                <li>Sparing: <span>1000kr</span></li>
-
-                <li>Andre utgifter: <span>1000kr</span></li>
-            </ul>
-                      </div>
+                        <center><p>Desember 2016</p></center>
+                        <ul class="budgetPageList">
+                            <li><center>9.500kr / 10.000kr</center>
+                                <div id="progressbar2" class="ecoProgress">
+                                </div>
+                                <center> + 500kr </center>
+                                <p>Faste Utgifter: <span>6.000kr</span></p>
+                                <p>Mat og Drikke: <span>2.000kr</span></p>
+                                <p>Transport: <span>500kr</span></p>
+                                <p>Underholdning: <span>500kr</span></p>
+                                <p>Sparing: <span>500kr</span></p>
+                            <p>Andre utgifter: <span>1000kr</span></p></li>
+                        </ul>
                     </div>
-                    <div class="frontView">
-                      <div class="economyitem">
-                          <p>Oktober 2016</p>
-                          
-                          <ul class="budgetPageList">
-
-                <li>Faste utgifter: <span>5500kr</span></li>
-
-                <li>Mat og drikke: <span>2000kr</span></li>
-
-                <li>Underholdning: <span>500kr</span></li>
-
-                <li>Sparing: <span>500kr</span></li>
-
-                <li>Andre utgifter: <span>1000kr</span></li>
-            </ul>
-                      </div>
-                        </div>
                 </div>
+                <div class="frontView">
+                    <div class="economyitem">
+                        <center>
+                <center><img src="img/hand-holding-up-a-sack-of-money.png" alt="budgets" id="ecoImg"></center>
+                <div id="chartContainer2" class="chartContainers"></div>
+            </center>
+                        <center><p>November 2016</p></center>
+                        <ul class="budgetPageList">
+                            <li><center>10.500kr / 12.000kr</center>
+                                <div id="progressbar3" class="ecoProgress">
+                                </div>
+                                <center> + 1.500kr </center>
+                                <p>Faste Utgifter: <span>5.500kr</span></p>
+                                <p>Mat og Drikke: <span>2.000kr</span></p>
+                                <p>Underholdning: <span>1.000kr</span></p>
+                                <p>Sparing: <span>1.000kr</span></p>
+                            <p>Andre utgifter: <span>1.000kr</span></p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="frontView">
+                    <div class="economyitem">
+                        <center>
+                <center><img src="img/hand-holding-up-a-sack-of-money.png" alt="budgets" id="ecoImg"></center>
+                <div id="chartContainer3" class="chartContainers"></div>
+            </center>
+                        <center><p>Oktober 2016</p></center>
+                        <ul class="budgetPageList">
+                            <li><center>9.500kr / 10.000kr</center>
+                                <div id="progressbar4" class="ecoProgress">
+                                </div>
+                                <center> + 500kr </center>
+                                <p>Faste Utgifter: <span>5.500kr</span></p>
+                                <p>Mat og Drikke: <span>2.000kr</span></p>
+                                <p>Underholdning: <span>500kr</span></p>
+                                <p>Sparing: <span>500kr</span></p>
+                            <p>Andre utgifter: <span>1000kr</span></p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!-- /content -->
@@ -317,71 +399,72 @@
             <h1>Belønninger</h1>
             <a href="#sidePanel" class="ui-btn-left ui-link ui-btn ui-icon-panelicon ui-btn-icon-notext ui-shadow ui-corner-all" id="panelBtn"></a>
         </div>
-        <!-- /header -->                
+        <!-- /header -->
         <div role="main" class="ui-content">
-            <div class = "rewardContainer">
-                <a href="#" onclick="jump()"><img src="img/coin-1.png" alt="silver coin" class="rewardsImg"></img></a>
-            <img src="img/coin.png" alt="Golden Coin" class="rewardsImg"></img>
-            <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-            <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
-            <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-        </div>
-        <div class="textcontainer">
-            <span class="rewardtext" id="save">Flink</span>
-            <span class="xp">350/1000</span>
-        </div>   
-        <div id="myProgress">
-          <div id="myBar"></div>
-        </div>
-        <div class = "rewardContainer">
-            <img src="img/celebration.png" alt="lock" class="rewardsImg"></img>
-                 <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-             <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-        
-        <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
-    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-    </div>
-<div class="textcontainer">
-            <span class="rewardtext" id="party">Champis</span>
-            <span class="xp">200/500</span>
-        </div>
-        <div id="myProgress">
-          <div id="myBar2"></div>
-        </div>
-<div class = "rewardContainer">
-            <img src="img/carrot.png" alt="lock" class="rewardsImg"></img>
-                 <img src="img/apple.png" alt="lock" class="rewardsImg"></img>
-             <img src="img/broccoli.png" alt="lock" class="rewardsImg"></img>
-        
-        <img src="img/locked.png" alt="lock" class="rewardsImg"></img> 
-    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-    </div>
-<div class="textcontainer">
-            <span class="rewardtext" id="food">Firt price</span>
-            <span class="xp">400/1000</span>
-        </div>        
+            <div class="rewardContainer">
+                <a href="#" onclick="jump()"><img src="img/coin-1.png" alt="silver coin" class="rewardsImg"></img>
+                </a>
+                <img src="img/coin.png" alt="Golden Coin" class="rewardsImg"></img>
+                <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+                <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+                <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+            </div>
+            <div class="textcontainer">
+                <span class="rewardtext" id="save">Flink</span>
+                <span class="xp">350/1000</span>
+            </div>
+            <div id="myProgress">
+                <div id="myBar"></div>
+            </div>
+            <div class="rewardContainer">
+                <img src="img/celebration.png" alt="lock" class="rewardsImg"></img>
+                <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+                <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
 
-        <div id="myProgress">
-          <div id="myBar3"></div>
-        </div>
-<div class = "rewardContainer">
-            <img src="img/bicycle.png" alt="lock" class="rewardsImg"></img>
-                 <img src="img/school-bus.png" alt="lock" class="rewardsImg"></img>
-             <img src="img/tractor.png" alt="lock" class="rewardsImg"></img>
-        
-        <img src="img/aeroplane.png" alt="lock" class="rewardsImg"></img> 
-    <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
-    </div>
-<div class="textcontainer">
-  <span class="rewardtext" id="transport">Kaptein</span>
-            <span class="xp">800/1200</span>
-        </div>       
-        <div id="myProgress">
-          <div id="myBar4"></div>
-        </div>
+                <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+                <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+            </div>
+            <div class="textcontainer">
+                <span class="rewardtext" id="party">Champis</span>
+                <span class="xp">200/500</span>
+            </div>
+            <div id="myProgress">
+                <div id="myBar2"></div>
+            </div>
+            <div class="rewardContainer">
+                <img src="img/carrot.png" alt="lock" class="rewardsImg"></img>
+                <img src="img/apple.png" alt="lock" class="rewardsImg"></img>
+                <img src="img/broccoli.png" alt="lock" class="rewardsImg"></img>
+
+                <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+                <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+            </div>
+            <div class="textcontainer">
+                <span class="rewardtext" id="food">Firt price</span>
+                <span class="xp">400/1000</span>
+            </div>
+
+            <div id="myProgress">
+                <div id="myBar3"></div>
+            </div>
+            <div class="rewardContainer">
+                <img src="img/bicycle.png" alt="lock" class="rewardsImg"></img>
+                <img src="img/school-bus.png" alt="lock" class="rewardsImg"></img>
+                <img src="img/tractor.png" alt="lock" class="rewardsImg"></img>
+
+                <img src="img/aeroplane.png" alt="lock" class="rewardsImg"></img>
+                <img src="img/locked.png" alt="lock" class="rewardsImg"></img>
+            </div>
+            <div class="textcontainer">
+                <span class="rewardtext" id="transport">Kaptein</span>
+                <span class="xp">800/1200</span>
+            </div>
+            <div id="myProgress">
+                <div id="myBar4"></div>
+            </div>
 
         </div>
-    
+
         <!-- /content -->
 
         <!-- footer -->
@@ -645,7 +728,7 @@
                     </a>
                 </li>
                 <li class="ui-li-static ui-body-inherit">
-                    <a href="#profile" data-role="button" class="panelBtns" >Profil</a>
+                    <a href="#profile" data-role="button" class="panelBtns">Profil</a>
                 </li>
                 <li class="ui-li-static ui-body-inherit">
                     <a href="login.html" data-role="button" class="panelBtns" rel="external">Logg ut</a>
@@ -653,7 +736,7 @@
             </ul>
         </div>
     </div>
-<!-- Start of budget page -->
+    <!-- Start of budget page -->
     <div data-role="page" id="profile">
         <div data-role="header" class="header" data-position="fixed">
             <h1>Profil</h1>
@@ -664,7 +747,7 @@
         <div role="main" class="ui-content profile" id="budgetMain">
             <br>
             <img src="img/diamond.png" alt="Diamant">
-           <p>Hei <span id="name"></span></p>
+            <p>Hei <span id="name"></span></p>
         </div>
         <!-- /content -->
 
@@ -686,8 +769,8 @@
     </div>
     <!-- /budget -->
     <!-- /sidePanel -->
-    
-    <script src="js/assets/js/jquery-1.9.1.min.js"></script> 
+
+    <script src="js/assets/js/jquery-1.9.1.min.js"></script>
     <script src="js/owl.carousel.js"></script>
     <script>
         function addBudget() {
@@ -751,17 +834,17 @@
                 'min-height': contentHeight + 'px'
             });
         }
-        
-        $(document).ready(function() {
+
+        $(document).ready(function () {
             $("#owl-demo").owlCarousel({
-                items : 3,
-                itemsMobile : [667,1],
-                pagination : true
+                items: 3,
+                itemsMobile: [667, 1],
+                pagination: true
 
             });
-            
+
             $("#name").text(localStorage.firstname + " " + localStorage.lastname);
-            
+
         });
     </script>
 </body>

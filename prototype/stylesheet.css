@@ -193,6 +193,24 @@
     padding: 0;
 }
 
+#ecoImg {
+    position: absolute;
+    width: 16%;
+    height: auto;
+    top: 20%;
+    left: 42.5%;
+    margin: auto;
+}
+
+.chartContainers {
+    width: 100vw;
+    height: 40vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+}
 
 .registerfields{
     background-color: #007272!important;
@@ -212,16 +230,6 @@
 
 .has-success{
     background-color: greenyellow!important;
-}
-
-#chartContainer {
-    width: 100vw;
-    height: 40vh;
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
 }
 
 .canvasjs-chart-credit {
@@ -288,9 +296,10 @@
     left: 0;
     right: 0;
     margin: auto;
+    background-color: white!important;
 }
 #progressbar .ui-progressbar-value {
-    background-color: #007272;
+    background-color: white !important;
     height: 100%;
     border-radius: 5em;
     /* IE9, iOS 3.2+ */
@@ -303,18 +312,8 @@
     background-image: -ms-linear-gradient(top, rgb(0, 114, 114) 25%, rgb(0, 104, 101) 75%);
 }
 .ui-progressbar.ui-widget-content {
-    background: white;
     border: 2px white solid;
     border-radius: 5em;
-}
-
-#ecoImg {
-    position: absolute;
-    width: 16%;
-    height: auto;
-    top: 15%;
-    left: 42.5%;
-    margin: auto;
 }
 
 #budget {
@@ -505,6 +504,26 @@
 
 #budgetBtn1 {
     /*margin-top: 0.5em;*/
+}
+
+/*progressbar2*/
+.ecoProgress {
+    width: 80%;
+    height: 4%;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: white!important;
+}
+.ecoProgress .ui-progressbar-value {
+    height: 0.5em;
+    border-radius: 5em;
+    background-color: #007272!important;
+}
+.ui-progressbar.ui-widget-content {
+    border: 2px white solid;
+    border-radius: 5em;
 }
 
 
@@ -708,6 +727,7 @@
     text-shadow: none!important;
     border-radius: 1em!important;
     margin-bottom: 10px;
+    height: 40vh;
 }
 
 .profile{
