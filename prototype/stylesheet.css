@@ -3,6 +3,14 @@
     src: url('fonts/Fedra-Sans-Std-Book_17248.ttf');
 }
 
+#logo{
+    position: fixed;
+    width: 250px;
+    top: 50px;
+    left: auto;
+    margin: auto;
+}
+
 .ui-content {
     padding-top: 0;
 }
