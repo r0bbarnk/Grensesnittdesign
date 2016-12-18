@@ -4,10 +4,12 @@
 }
 
 #logo{
-    position: fixed;
-    width: 250px;
-    top: 50px;
-    left: auto;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 25%;
+    left: 0;
+    right: 0;
     margin: auto;
 }
 
